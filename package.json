@@ -10,6 +10,7 @@
     "@types/node": "^16.18.116",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
+    "eslint-config-prettier": "^9.1.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-scripts": "5.0.1",
@@ -22,7 +23,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint -c eslint.config.mjs .",
-    "lint:fix": "eslint -c eslint.config.mjs . --quiet --fix"
+    "lint:fix": "eslint -c eslint.config.mjs . --quiet --fix",
+    "format": "prettier --write '**/*.{js,jsx,ts,tsx,json}'",
+    "pc": "yarn lint --fix && yarn format"
   },
   "eslintConfig": {
     "extends": [
@@ -48,6 +51,7 @@
     "@typescript-eslint/parser": "^8.12.2",
     "eslint": "^9.13.0",
     "eslint-config-react-app": "^7.0.1",
+    "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-react": "^7.37.2",
     "globals": "^15.11.0",
     "prettier": "3.3.3",
