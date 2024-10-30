@@ -25,7 +25,8 @@
     "lint": "eslint -c eslint.config.mjs .",
     "lint:fix": "eslint -c eslint.config.mjs . --quiet --fix",
     "format": "prettier --write '**/*.{js,jsx,ts,tsx,json}'",
-    "pc": "yarn lint --fix && yarn format"
+    "pc": "yarn lint --fix && yarn format",
+    "prepare": "husky install"
   },
   "eslintConfig": {
     "extends": [
@@ -54,8 +55,15 @@
     "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-react": "^7.37.2",
     "globals": "^15.11.0",
+    "husky": "^8.0.0",
+    "pinst": "^3.0.0",
     "prettier": "3.3.3",
     "typescript-eslint": "^8.12.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "echo ”[Husky] pre-commit”"
+    }
   },
   "main": "src/index.tsx",
   "repository": "https://github.com/pkostukevich/art-museum.git",
