@@ -2,6 +2,7 @@ import { CardSize } from 'interfaces/enum/cardSize.enum';
 import React from 'react';
 import Favorite from '../../assets/svg/bookmark.svg';
 import './ArtworkCard.scss';
+import { trimString } from '../../utils/trimString';
 
 type ArtworkCardProps = {
   title: string;
@@ -27,8 +28,8 @@ const ArtworkCard: React.FC<ArtworkCardProps> = ({
         className={`artwork-card__image ${size}`}
       />
       <div className="artwork-card__info">
-        <p className="artwork-card__info__title">{title}</p>
-        <p className="artwork-card__info__author">{author}</p>
+        <p className="artwork-card__info__title">{trimString(title, 22)}</p>
+        <p className="artwork-card__info__author">{trimString(author, 24)}</p>
         <p className="artwork-card__info__description">
           {publicDomain ? 'Public' : 'Not public'}
         </p>
