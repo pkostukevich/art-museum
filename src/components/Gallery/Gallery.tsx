@@ -2,14 +2,14 @@ import React from 'react';
 import { usePagination } from '../../hooks/usePagination';
 import { Painting } from '../../interfaces/painting.interface';
 import { generatePageNumbers } from '../../utils/generatePageNumbers';
-import PaginationBar from './PaginationBar/PaginationBar';
+import PaginationBar from '../PaginationBar/PaginationBar';
 
-type PaginationLayoutProps = {
+type GalleryProps = {
   data: Painting[];
   itemsPerPage: number;
 };
 
-const PaginationLayout: React.FC<PaginationLayoutProps> = ({
+const Gallery: React.FC<GalleryProps> = ({
   data,
   itemsPerPage,
 }) => {
@@ -39,4 +39,4 @@ const PaginationLayout: React.FC<PaginationLayoutProps> = ({
   );
 };
 
-export default PaginationLayout;
+export default Gallery;

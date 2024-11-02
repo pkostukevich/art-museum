@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { fetchPaintings } from '../../api/fetchPaintings';
 import { Painting } from '../../interfaces/painting.interface';
-import PaginationComponent from '../../components/PaginationLayout/PaginationLayout';
+import PaginationComponent from '../../components/Gallery/Gallery';
 
 const Home: React.FC = () => {
   const [paintings, setPaintings] = useState<Painting[]>([]);
