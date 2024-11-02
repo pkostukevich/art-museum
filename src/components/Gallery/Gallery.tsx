@@ -9,10 +9,7 @@ type GalleryProps = {
   itemsPerPage: number;
 };
 
-const Gallery: React.FC<GalleryProps> = ({
-  data,
-  itemsPerPage,
-}) => {
+const Gallery: React.FC<GalleryProps> = ({ data, itemsPerPage }) => {
   const { getCurrentData, currentPage, maxPage, next, prev, setPage } =
     usePagination(data, itemsPerPage);
   const pages: number[] = generatePageNumbers(currentPage, maxPage);
