@@ -1,9 +1,9 @@
-@import './../../../styles/colors.scss';
+@use '../../../styles/colors.scss';
 
 .pagination__button{
     width: 30px;
     height: 30px;
-    color: $grey;
+    color: colors.$grey;
     font-weight: 300;
     font-size: 18px;
     line-height: 24px;
@@ -13,9 +13,9 @@
     cursor: pointer;
 
     &.active{
-        color: $white;
+        color: colors.$white;
         font-weight: 600;
-        background-color: $orange;
+        background-color: colors.$orange;
     }
 
     &.hidden{

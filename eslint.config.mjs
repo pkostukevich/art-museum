@@ -4,7 +4,7 @@ import tseslint from "typescript-eslint";
 import pluginReact from "eslint-plugin-react";
 
 export default [
-  {files: ["**/*.{mjs,cjs,ts,tsx}"]},
+  {files: ["**/*.{ts,tsx}"]},
   {languageOptions: { globals: globals.browser }},
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
@@ -15,6 +15,9 @@ export default [
         version: "detect",
       },
     },
+  },
+  {
+    ignores: ["config-overrides.js", "webpack.config.js"]
   },
   {
     rules: {

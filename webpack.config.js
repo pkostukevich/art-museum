@@ -1,4 +1,4 @@
-/* eslint-disable no-undef, @typescript-eslint/typedef */
+/* eslint-disable no-undef */
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
@@ -13,7 +13,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html',
-    }),
+    })
   ],
   resolve: {
     modules: [__dirname, 'src', 'node_modules'],

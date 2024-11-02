@@ -2,9 +2,9 @@ import React from 'react';
 import './App.css';
 import './styles/common.scss';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
-import Home from './pages/Home/Home';
-import Favourites from './pages/Favorites/Favourites';
-import Painting from './pages/Painting/Painting';
+import Home from "@pages/Home/Home";
+import Favourites from '@pages/Favorites/Favourites';
+import Painting from '@pages/Painting/Painting';
 import Layout from './components/Layout/Layout';
 
 function App(): JSX.Element {
