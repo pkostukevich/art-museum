@@ -1,0 +1,51 @@
+@use '../../styles/colors.scss' as color;
+
+.artwork-card{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: color.$white;
+    padding: 24px 32px;
+    line-height: 26.3px;
+    max-width: 415px;
+    height: 130px;
+
+    &__image{
+        width: 80px;
+        height: 80px;
+    }
+
+    &__info{
+        width: 220px;
+
+        &__title{
+            color: color.$grey;
+            font-size: 17.5px;
+            font-weight: 500;
+        }
+        &__author{
+            color: color.$ocher;
+            font-size: 15.35px;
+            font-weight: 400;
+        }
+        &__description{
+            color: color.$grey;
+            font-size: 15.35px;
+            font-weight: 700;
+        }
+    }
+
+    &__favorite{
+        border-radius: 50%;
+        background-color: color.$lightGrey;
+        height: 59px;
+        width: 59px;
+        padding: 17px;
+        box-sizing: border-box;
+    }
+
+    &__favorite.active{
+        background-color: color.$lightOrange;
+        opacity: 0.3;
+    }
+}
