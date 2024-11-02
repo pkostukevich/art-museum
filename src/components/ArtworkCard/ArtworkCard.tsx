@@ -1,8 +1,8 @@
-import { CardSize } from 'interfaces/enum/cardSize.enum';
 import React from 'react';
-import Favorite from '../../assets/svg/bookmark.svg';
+import Favorite from '@svg/bookmark.svg';
+import { CardSize } from '@models/enums/cardSize.enum';
+import { trimString } from '@utils/trimString';
 import './ArtworkCard.scss';
-import { trimString } from '../../utils/trimString';
 
 type ArtworkCardProps = {
   title: string;

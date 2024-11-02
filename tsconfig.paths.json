@@ -2,8 +2,17 @@
   "compilerOptions": {
     "baseUrl": "./src",
     "paths": {
-      "@assets/*": ["./assets/*"],
-      "@pages/*": ["./pages/*"]
+      "@api/*": ["./api/*"],
+      "@components/*": ["./components/*"],
+      "@constants/*": ["./constants/*"],
+      "@hooks/*": ["./hooks/*"],
+      "@fonts/*": ["./assets/fonts/*"],
+      "@models/*": ["./models/*"],
+      "@pages/*": ["./pages/*"],
+      "@store/*": ["./store/*"],
+      "@styles/*": ["./styles/*"],
+      "@svg/*": ["./assets/svg/*"],
+      "@utils/*": ["./utils/*"]
     }
   }
 }

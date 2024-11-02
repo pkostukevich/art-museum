@@ -1,10 +1,10 @@
 import React from 'react';
-import { usePagination } from '../../hooks/usePagination';
-import { Painting } from '../../interfaces/painting.interface';
-import { generatePageNumbers } from '../../utils/generatePageNumbers';
-import PaginationBar from '../PaginationBar/PaginationBar';
-import ArtworkCard from '../ArtworkCard/ArtworkCard';
-import { CardSize } from '../../interfaces/enum/cardSize.enum';
+import { usePagination } from '@hooks/usePagination';
+import { Painting } from '@models/interfaces/painting.interface';
+import { generatePageNumbers } from '@utils/generatePageNumbers';
+import PaginationBar from '@components/PaginationBar/PaginationBar';
+import ArtworkCard from '@components/ArtworkCard/ArtworkCard';
+import { CardSize } from '@models/enums/cardSize.enum';
 
 type GalleryProps = {
   data: Painting[];

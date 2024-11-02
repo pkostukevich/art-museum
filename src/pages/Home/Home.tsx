@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { fetchPaintings } from '../../api/fetchPaintings';
-import { Painting } from '../../interfaces/painting.interface';
-import PaginationComponent from '../../components/Gallery/Gallery';
+import { fetchPaintings } from '@api/fetchPaintings';
+import { Painting } from '@models/interfaces/painting.interface';
+import PaginationComponent from '@components/Gallery/Gallery';
 import './Home.scss';
 
 const Home: React.FC = () => {

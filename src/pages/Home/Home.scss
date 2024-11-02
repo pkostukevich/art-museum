@@ -1,5 +1,5 @@
-@use '../../styles/colors.scss' as color;
+@use '@styles/colors';
 
 .home{
-    background-color: color.$lightGrey;
+    background-color: colors.$lightGrey;
 }

@@ -1,5 +1,5 @@
-import { FETCH_PAINTINGS_URL } from '../constants/fetchPaintingsUrl';
-import { Painting } from '../interfaces/painting.interface';
+import { FETCH_PAINTINGS_URL } from '@constants/fetchPaintingsUrl';
+import { Painting } from '@models/interfaces/painting.interface';
 
 export async function fetchPaintings(): Promise<Painting[]> {
   try {

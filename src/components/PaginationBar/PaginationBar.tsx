@@ -1,7 +1,7 @@
 import React from 'react';
-import PaginationButton from './PaginationButton/PaginationButton';
-import ArrowRight from '../../assets/svg/arrow-right.svg';
-import ArrowLeft from '../../assets/svg/arrow-left.svg';
+import PaginationButton from '@components/PaginationBar/PaginationButton/PaginationButton';
+import ArrowRight from '@svg/arrow-right.svg';
+import ArrowLeft from '@svg/arrow-left.svg';
 
 type PaginationBarProps = {
   currentPage: number;
