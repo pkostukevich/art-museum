@@ -35,6 +35,7 @@ export default [
         ],
       "@typescript-eslint/no-require-imports": "off",
       "@typescript-eslint/no-var-requires": "off",
+      "react/prop-types": "off"
     },
   }
 ];
