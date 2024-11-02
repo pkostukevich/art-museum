@@ -1,4 +1,7 @@
 import React from 'react';
+import PaginationButton from './PaginationButton/PaginationButton';
+import ArrowRight from '../../../assets/svg/arrow-right.svg';
+import ArrowLeft from '../../../assets/svg/arrow-left.svg'
 
 type PaginationBarProps = {
   currentPage: number;
@@ -19,21 +22,11 @@ const PaginationBar: React.FC<PaginationBarProps> = ({
 }) => {
   return (
     <div className="pagination-bar">
-      <button onClick={onPrev} disabled={currentPage === 1}>
-        {'<'}
-      </button>
-      {pages.map((page: number, index: number) => (
-        <button
-          key={index}
-          onClick={() => setPage(page)}
-          disabled={currentPage === page}
-        >
-          {page}
-        </button>
+      <PaginationButton content={<img src={ArrowLeft}/>} handleClick={onPrev} hidden={currentPage === 1}/>
+      {pages.map((page: number) => (
+        <PaginationButton key={page} content={page} handleClick={() => setPage(page)}  active={currentPage === page}/>
       ))}
-      <button onClick={onNext} disabled={currentPage === maxPage}>
-        {'>'}
-      </button>
+      <PaginationButton content={<img src={ArrowRight}/>} handleClick={onNext} hidden={currentPage === maxPage}/>
     </div>
   );
 };
