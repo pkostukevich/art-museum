@@ -7,6 +7,7 @@ import ArtworkCard from '@components/ArtworkCard/ArtworkCard';
 import { CardSize } from '@models/enums/cardSize.enum';
 import SectionTitle from '@components/SectionTitle/SectionTitle';
 import './Gallery.scss';
+import { NavigateFunction, useNavigate } from 'react-router-dom';
 
 type GalleryProps = {
   data: Painting[];
@@ -14,6 +15,7 @@ type GalleryProps = {
 };
 
 const Gallery: React.FC<GalleryProps> = ({ data, itemsPerPage }) => {
+  const navigate: NavigateFunction = useNavigate();
   const { getCurrentData, currentPage, maxPage, next, prev, setPage } =
     usePagination(data, itemsPerPage);
   const pages: number[] = generatePageNumbers(currentPage, maxPage);
@@ -30,6 +32,7 @@ const Gallery: React.FC<GalleryProps> = ({ data, itemsPerPage }) => {
             publicDomain={item.is_public_domain}
             imageId={item.image_id}
             size={CardSize.LARGE}
+            handleClick={() => navigate(`/paintings/${item.id}`)}
           />
         ))}
       </div>

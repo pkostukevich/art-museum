@@ -12,6 +12,7 @@ type ArtworkCardProps = {
   imageId: string;
   size: CardSize;
   favorite?: boolean;
+  handleClick?: () => void;
 };
 
 const ArtworkCard: React.FC<ArtworkCardProps> = ({
@@ -21,6 +22,7 @@ const ArtworkCard: React.FC<ArtworkCardProps> = ({
   imageId,
   size,
   favorite = false,
+  handleClick,
 }) => {
   const [imageSrc, setImageSrc] = React.useState<string>(DefaultArtwork);
 
@@ -32,7 +34,7 @@ const ArtworkCard: React.FC<ArtworkCardProps> = ({
   }, [imageId]);
 
   return (
-    <div className={`artwork-card__wrapper ${size}`}>
+    <div className={`artwork-card__wrapper ${size}`} onClick={handleClick}>
       <div className="artwork-card">
         <img src={imageSrc} className="artwork-card__image" alt={title} />
         <div className="artwork-card__info">
