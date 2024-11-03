@@ -8,6 +8,7 @@ import { CardSize } from '@models/enums/cardSize.enum';
 import SectionTitle from '@components/SectionTitle/SectionTitle';
 import './Gallery.scss';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
+import { retrieveArtistName } from '@utils/retrieveArtistInfo';
 
 type GalleryProps = {
   data: Painting[];
@@ -32,7 +33,7 @@ const Gallery: React.FC<GalleryProps> = ({ data, itemsPerPage }) => {
           <ArtworkCard
             key={item.id}
             title={item.title}
-            author={item.artist_display}
+            author={retrieveArtistName(item.artist_display)}
             publicDomain={item.is_public_domain}
             imageId={item.image_id}
             size={CardSize.LARGE}

@@ -8,6 +8,10 @@ import SectionTitle from '@components/SectionTitle/SectionTitle';
 import DescriptionItem from '@components/DescriptionItem/DescriptionItem';
 import './PaintingInfo.scss';
 import FavoriteIcon from '@components/FavoriteIcon/FavoriteIcon';
+import {
+  retrieveArtistName,
+  retrieveArtistNationality,
+} from '@utils/retrieveArtistInfo';
 
 const PaintingInfo: React.FC = () => {
   const { id } = useParams();
@@ -45,7 +49,7 @@ const PaintingInfo: React.FC = () => {
           <div>
             <SectionTitle title={painting.title} align="left" />
             <p className="painting__info__artist">
-              {painting.artist_display?.split('\n')[0]}
+              {retrieveArtistName(painting.artist_display)}
             </p>
             <p className="painting__info__date">{painting.date_display}</p>
           </div>
@@ -53,7 +57,7 @@ const PaintingInfo: React.FC = () => {
             <SectionTitle title="Overwiev" align="left" />
             <DescriptionItem
               category="Artist nationality:"
-              value={painting.artist_display?.split('\n')[1]?.split(',')[0]}
+              value={retrieveArtistNationality(painting.artist_display)}
             />
             <DescriptionItem
               category="Dimensions: Sheet:"
