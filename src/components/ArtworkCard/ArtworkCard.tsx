@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
-import Favorite from '@svg/bookmark.svg';
 import DefaultArtwork from '@svg/default-artwork.svg';
 import { CardSize } from '@models/enums/cardSize.enum';
 import './ArtworkCard.scss';
 import { getImageUrl } from '@utils/getImageUrl';
+import FavoriteIcon from '@components/FavoriteIcon/FavoriteIcon';
 
 type ArtworkCardProps = {
   title: string;
@@ -45,11 +45,7 @@ const ArtworkCard: React.FC<ArtworkCardProps> = ({
               {publicDomain ? 'Public' : 'Not public'}
             </p>
           </div>
-          <div
-            className={`artwork-card__info__favorite ${favorite ? 'active' : ''}`}
-          >
-            <img src={Favorite} alt="favorite" />
-          </div>
+          <FavoriteIcon active={favorite} />
         </div>
       </div>
     </div>

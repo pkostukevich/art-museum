@@ -22,7 +22,11 @@ const Gallery: React.FC<GalleryProps> = ({ data, itemsPerPage }) => {
 
   return (
     <>
-      <SectionTitle title="Our special gallery" note="Topics for you" />
+      <SectionTitle
+        title="Our special gallery"
+        note="Topics for you"
+        align="center"
+      />
       <div className="gallery">
         {getCurrentData().map((item) => (
           <ArtworkCard
