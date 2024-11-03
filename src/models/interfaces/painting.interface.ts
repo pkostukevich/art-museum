@@ -3,4 +3,5 @@ export interface Painting {
   title: string;
   artist_display: string;
   image_id: string;
+  is_public_domain: boolean;
 }

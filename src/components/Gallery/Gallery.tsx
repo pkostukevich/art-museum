@@ -1,8 +1,12 @@
 import React from 'react';
-import { usePagination } from '../../hooks/usePagination';
-import { Painting } from '../../interfaces/painting.interface';
-import { generatePageNumbers } from '../../utils/generatePageNumbers';
-import PaginationBar from '../PaginationBar/PaginationBar';
+import { usePagination } from '@hooks/usePagination';
+import { Painting } from '@models/interfaces/painting.interface';
+import { generatePageNumbers } from '@utils/generatePageNumbers';
+import PaginationBar from '@components/PaginationBar/PaginationBar';
+import ArtworkCard from '@components/ArtworkCard/ArtworkCard';
+import { CardSize } from '@models/enums/cardSize.enum';
+import SectionTitle from '@components/SectionTitle/SectionTitle';
+import './Gallery.scss';
 
 type GalleryProps = {
   data: Painting[];
@@ -16,12 +20,17 @@ const Gallery: React.FC<GalleryProps> = ({ data, itemsPerPage }) => {
 
   return (
     <>
-      <div>
+      <SectionTitle title="Our special gallery" note="Topics for you" />
+      <div className="gallery">
         {getCurrentData().map((item) => (
-          <div key={item.id}>
-            <h5>{item.title}</h5>
-            <p>{item.artist_display}</p>
-          </div>
+          <ArtworkCard
+            key={item.id}
+            title={item.title}
+            author={item.artist_display}
+            publicDomain={item.is_public_domain}
+            imageId={item.image_id}
+            size={CardSize.LARGE}
+          />
         ))}
       </div>
       <PaginationBar
