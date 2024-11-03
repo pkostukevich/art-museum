@@ -32,21 +32,23 @@ const ArtworkCard: React.FC<ArtworkCardProps> = ({
   }, [imageId]);
 
   return (
-    <div className="artwork-card">
-      <img
-        src={imageSrc}
-        className={`artwork-card__image ${size}`}
-        alt={title}
-      />
-      <div className="artwork-card__info">
-        <p className="artwork-card__info__title">{title}</p>
-        <p className="artwork-card__info__author">{author}</p>
-        <p className="artwork-card__info__description">
-          {publicDomain ? 'Public' : 'Not public'}
-        </p>
-      </div>
-      <div className={`artwork-card__favorite ${favorite ? 'active' : ''}`}>
-        <img src={Favorite} alt="favorite" />
+    <div className={`artwork-card__wrapper ${size}`}>
+      <div className="artwork-card">
+        <img src={imageSrc} className="artwork-card__image" alt={title} />
+        <div className="artwork-card__info">
+          <div className="column">
+            <p className="artwork-card__info__title">{title}</p>
+            <p className="artwork-card__info__author">{author}</p>
+            <p className="artwork-card__info__description">
+              {publicDomain ? 'Public' : 'Not public'}
+            </p>
+          </div>
+          <div
+            className={`artwork-card__info__favorite ${favorite ? 'active' : ''}`}
+          >
+            <img src={Favorite} alt="favorite" />
+          </div>
+        </div>
       </div>
     </div>
   );

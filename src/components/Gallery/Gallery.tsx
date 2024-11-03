@@ -5,6 +5,8 @@ import { generatePageNumbers } from '@utils/generatePageNumbers';
 import PaginationBar from '@components/PaginationBar/PaginationBar';
 import ArtworkCard from '@components/ArtworkCard/ArtworkCard';
 import { CardSize } from '@models/enums/cardSize.enum';
+import SectionTitle from '@components/SectionTitle/SectionTitle';
+import './Gallery.scss';
 
 type GalleryProps = {
   data: Painting[];
@@ -18,7 +20,8 @@ const Gallery: React.FC<GalleryProps> = ({ data, itemsPerPage }) => {
 
   return (
     <>
-      <div>
+      <SectionTitle title="Our special gallery" note="Topics for you" />
+      <div className="gallery">
         {getCurrentData().map((item) => (
           <ArtworkCard
             key={item.id}
