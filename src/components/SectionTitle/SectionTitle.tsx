@@ -3,14 +3,15 @@ import './SectionTitle.scss';
 
 type SectionTitleProps = {
   title: string;
+  align: 'left' | 'center';
   note?: string;
 };
 
-const SectionTitle: React.FC<SectionTitleProps> = ({ title, note }) => {
+const SectionTitle: React.FC<SectionTitleProps> = ({ title, note, align }) => {
   return (
-    <div className="section-title">
+    <div className={`section-title section-title--${align}`}>
       <p className="section-title__note">{note}</p>
-      <h2 className="section-title__main">{title}</h2>
+      <p className="section-title__main">{title}</p>
     </div>
   );
 };

@@ -51,23 +51,7 @@
             font-weight: 700;
             margin-top: 16px;
         }
-
-        &__favorite{
-            border-radius: 50%;
-            background-color: colors.$lightGrey;
-            height: 59px;
-            width: 59px;
-            padding: 17px;
-            box-sizing: border-box;
-            font-size: 12px;
-        }
-
-        &__favorite.active{
-            background-color: colors.$lightOrange;
-            opacity: 0.3;
-        }
     }
-
 }
 
 .artwork-card__wrapper{

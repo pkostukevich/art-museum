@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
-import Favorite from '@svg/bookmark.svg';
 import DefaultArtwork from '@svg/default-artwork.svg';
 import { CardSize } from '@models/enums/cardSize.enum';
 import './ArtworkCard.scss';
 import { getImageUrl } from '@utils/getImageUrl';
+import FavoriteIcon from '@components/FavoriteIcon/FavoriteIcon';
 
 type ArtworkCardProps = {
   title: string;
@@ -12,6 +12,7 @@ type ArtworkCardProps = {
   imageId: string;
   size: CardSize;
   favorite?: boolean;
+  handleClick?: () => void;
 };
 
 const ArtworkCard: React.FC<ArtworkCardProps> = ({
@@ -21,6 +22,7 @@ const ArtworkCard: React.FC<ArtworkCardProps> = ({
   imageId,
   size,
   favorite = false,
+  handleClick,
 }) => {
   const [imageSrc, setImageSrc] = React.useState<string>(DefaultArtwork);
 
@@ -32,7 +34,7 @@ const ArtworkCard: React.FC<ArtworkCardProps> = ({
   }, [imageId]);
 
   return (
-    <div className={`artwork-card__wrapper ${size}`}>
+    <div className={`artwork-card__wrapper ${size}`} onClick={handleClick}>
       <div className="artwork-card">
         <img src={imageSrc} className="artwork-card__image" alt={title} />
         <div className="artwork-card__info">
@@ -43,11 +45,7 @@ const ArtworkCard: React.FC<ArtworkCardProps> = ({
               {publicDomain ? 'Public' : 'Not public'}
             </p>
           </div>
-          <div
-            className={`artwork-card__info__favorite ${favorite ? 'active' : ''}`}
-          >
-            <img src={Favorite} alt="favorite" />
-          </div>
+          <FavoriteIcon active={favorite} />
         </div>
       </div>
     </div>
