@@ -13,9 +13,11 @@ import {
   retrieveArtistNationality,
 } from '@utils/retrieveArtistInfo';
 import BackButton from '@components/BackButton/BackButton';
+import { useFavorites } from '@hooks/useSessionStorage';
 
 const PaintingInfo: React.FC = () => {
   const { id } = useParams();
+  const [favorites, toggleFavoriteInStorage] = useFavorites();
   const [painting, setPainting] = useState<Painting>();
   const [imageSrc, setImageSrc] = useState<string>(DefaultArtwork);
 
@@ -43,7 +45,10 @@ const PaintingInfo: React.FC = () => {
           className="painting__image"
         />
         <div className="painting__favorite">
-          <FavoriteIcon active={false} toggleActive={() => {}} />
+          <FavoriteIcon
+            active={favorites.includes(Number(id))}
+            toggleActive={() => toggleFavoriteInStorage(Number(id))()}
+          />
         </div>
       </div>
       {painting && (
