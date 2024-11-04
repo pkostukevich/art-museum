@@ -10,7 +10,6 @@
     font-size: 12px;
 
     &.favorite-icon--active{
-        background-color: colors.$lightOrange;
-        opacity: 0.3;
+        background-color: colors.$transparentOrange;
     }
 }

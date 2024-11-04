@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { fetchPaintings } from '@api/fetchPaintings';
 import { Painting } from '@models/interfaces/painting.interface';
-import PaginationComponent from '@components/Gallery/Gallery';
+import Gallery from '@components/Gallery/Gallery';
 import './Home.scss';
 
 const Home: React.FC = () => {
@@ -16,11 +16,10 @@ const Home: React.FC = () => {
 
   return (
     <div className="home">
-      <h1>Home</h1>
       {loading ? (
         <p>Loading...</p>
       ) : (
-        <PaginationComponent data={paintings} itemsPerPage={3} />
+        <Gallery data={paintings} itemsPerPage={3} />
       )}
     </div>
   );

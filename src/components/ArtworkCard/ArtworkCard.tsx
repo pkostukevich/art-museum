@@ -11,7 +11,8 @@ type ArtworkCardProps = {
   publicDomain: boolean;
   imageId: string;
   size: CardSize;
-  favorite?: boolean;
+  favorite: boolean;
+  toggleFavorite: () => void;
   handleClick?: () => void;
 };
 
@@ -21,7 +22,8 @@ const ArtworkCard: React.FC<ArtworkCardProps> = ({
   publicDomain,
   imageId,
   size,
-  favorite = false,
+  favorite,
+  toggleFavorite,
   handleClick,
 }) => {
   const [imageSrc, setImageSrc] = React.useState<string>(DefaultArtwork);
@@ -45,7 +47,13 @@ const ArtworkCard: React.FC<ArtworkCardProps> = ({
               {publicDomain ? 'Public' : 'Not public'}
             </p>
           </div>
-          <FavoriteIcon active={favorite} />
+          <FavoriteIcon
+            active={favorite}
+            toggleActive={(e: React.MouseEvent) => {
+              e.stopPropagation();
+              toggleFavorite();
+            }}
+          />
         </div>
       </div>
     </div>

@@ -4,11 +4,18 @@ import './FavoriteIcon.scss';
 
 type FavoriteIconProps = {
   active?: boolean;
+  toggleActive?: (e: React.MouseEvent) => void;
 };
 
-const FavoriteIcon: React.FC<FavoriteIconProps> = ({ active }) => {
+const FavoriteIcon: React.FC<FavoriteIconProps> = ({
+  active,
+  toggleActive,
+}) => {
   return (
-    <div className={`favorite-icon ${active ? 'favorite-icon--active' : ''}`}>
+    <div
+      className={`favorite-icon ${active ? 'favorite-icon--active' : ''}`}
+      onClick={toggleActive}
+    >
       <img src={Favorite} alt="favorite" />
     </div>
   );
