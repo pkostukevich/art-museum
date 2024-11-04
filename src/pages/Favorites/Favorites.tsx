@@ -1,5 +1,6 @@
 import { fetchPaintingById } from '@api/fetchPaintings';
 import Grid from '@components/Grid/Grid';
+import Loader from '@components/Loader/Loader';
 import PageTitle from '@components/PageTitle/PageTitle';
 import SectionTitle from '@components/SectionTitle/SectionTitle';
 import { useFavorites } from '@hooks/useSessionStorage';
@@ -9,10 +10,12 @@ import React, { useEffect, useState } from 'react';
 const Favorites: React.FC = () => {
   const [favoriteIds] = useFavorites();
   const [favorites, setFavorites] = useState<Painting[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchFavorites = async (): Promise<void> => {
       const favoritePaintings: Painting[] = [];
+      setLoading(true);
       for (const id of favoriteIds) {
         const painting: Painting = await fetchPaintingById(id.toString());
         if (!favoritePaintings.some((p) => p.id === painting.id)) {
@@ -20,6 +23,7 @@ const Favorites: React.FC = () => {
         }
       }
       setFavorites(favoritePaintings);
+      setLoading(false);
     };
     fetchFavorites();
   }, [favoriteIds]);
@@ -35,7 +39,7 @@ const Favorites: React.FC = () => {
           note="Saved by you"
           align="center"
         />
-        <Grid items={favorites} />
+        {loading ? <Loader /> : <Grid items={favorites} />}
       </section>
     </div>
   );
