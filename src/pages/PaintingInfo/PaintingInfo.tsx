@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import DefaultArtwork from '@svg/default-artwork.svg';
-import BackButton from '@svg/arrow-left.svg';
-import { NavigateFunction, useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { Painting } from '@models/interfaces/painting.interface';
 import { fetchPaintingById } from '@api/fetchPaintings';
 import { getImageUrl } from '@utils/getImageUrl';
@@ -13,10 +12,10 @@ import {
   retrieveArtistName,
   retrieveArtistNationality,
 } from '@utils/retrieveArtistInfo';
+import BackButton from '@components/BackButton/BackButton';
 
 const PaintingInfo: React.FC = () => {
   const { id } = useParams();
-  const navigate: NavigateFunction = useNavigate();
   const [painting, setPainting] = useState<Painting>();
   const [imageSrc, setImageSrc] = useState<string>(DefaultArtwork);
 
@@ -36,10 +35,7 @@ const PaintingInfo: React.FC = () => {
 
   return (
     <div className="painting">
-      <div className="painting__back" onClick={() => navigate(-1)}>
-        <img src={BackButton} alt="back" />
-        <span>Back</span>
-      </div>
+      <BackButton />
       <div className="painting__image-wrapper">
         <img
           src={imageSrc}
@@ -47,7 +43,7 @@ const PaintingInfo: React.FC = () => {
           className="painting__image"
         />
         <div className="painting__favorite">
-          <FavoriteIcon active={false} />
+          <FavoriteIcon active={false} toggleActive={() => {}} />
         </div>
       </div>
       {painting && (
