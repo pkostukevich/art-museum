@@ -3,8 +3,8 @@ import Favorite from '@svg/bookmark.svg';
 import './FavoriteIcon.scss';
 
 type FavoriteIconProps = {
-  active?: boolean;
-  toggleActive?: (e: React.MouseEvent) => void;
+  active: boolean;
+  toggleActive: (e: React.MouseEvent) => void;
 };
 
 const FavoriteIcon: React.FC<FavoriteIconProps> = ({

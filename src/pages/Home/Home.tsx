@@ -6,12 +6,14 @@ import './Home.scss';
 import PageTitle from '@components/PageTitle/PageTitle';
 import Grid from '@components/Grid/Grid';
 import SectionTitle from '@components/SectionTitle/SectionTitle';
+import Loader from '@components/Loader/Loader';
 
 const Home: React.FC = () => {
   const [paintings, setPaintings] = useState<Painting[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    setLoading(true);
     fetchPaintings()
       .then((data: Painting[]) => setPaintings(data))
       .finally(() => setLoading(false));
@@ -23,7 +25,7 @@ const Home: React.FC = () => {
         <PageTitle text="Let's find some art here!" highlightedText="art" />
       </section>
       {loading ? (
-        <p>Loading...</p>
+        <Loader />
       ) : (
         <>
           <section className="section">
