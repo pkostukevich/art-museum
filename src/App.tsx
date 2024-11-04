@@ -6,17 +6,20 @@ import Home from '@pages/Home/Home';
 import Favorites from '@pages/Favorites/Favorites';
 import Painting from '@pages/PaintingInfo/PaintingInfo';
 import Layout from './components/Layout/Layout';
+import ErrorBoundary from '@components/ErrorBoundary/ErrorBoundary';
 
-function App(): JSX.Element {
+function App(): React.ReactElement {
   return (
     <BrowserRouter>
       <Layout>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/paintings/:id" element={<Painting />} />
-          <Route path="/favorites" element={<Favorites />} />
-          <Route path="*" element={<Navigate to="/" />} />
-        </Routes>
+        <ErrorBoundary>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/paintings/:id" element={<Painting />} />
+            <Route path="/favorites" element={<Favorites />} />
+            <Route path="*" element={<Navigate to="/" />} />
+          </Routes>
+        </ErrorBoundary>
       </Layout>
     </BrowserRouter>
   );
