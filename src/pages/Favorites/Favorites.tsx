@@ -1,4 +1,5 @@
 import { fetchPaintingById } from '@api/fetchPaintings';
+import Grid from '@components/Grid/Grid';
 import PageTitle from '@components/PageTitle/PageTitle';
 import SectionTitle from '@components/SectionTitle/SectionTitle';
 import { useFavorites } from '@hooks/useSessionStorage';
@@ -25,18 +26,17 @@ const Favorites: React.FC = () => {
 
   return (
     <div>
-      <PageTitle text="Here are your favorites" highlightedText="favorites" />
-      <SectionTitle
-        title="Your favorites list"
-        note="Saved by you"
-        align="center"
-      />
-      {favorites.map((painting) => (
-        <div key={painting.id}>
-          <img src={painting.image_id} alt={painting.title} />
-          <h3>{painting.title}</h3>
-        </div>
-      ))}
+      <section className="section">
+        <PageTitle text="Here are your favorites" highlightedText="favorites" />
+      </section>
+      <section className="section">
+        <SectionTitle
+          title="Your favorites list"
+          note="Saved by you"
+          align="center"
+        />
+        <Grid items={favorites} />
+      </section>
     </div>
   );
 };
