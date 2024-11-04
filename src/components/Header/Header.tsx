@@ -2,7 +2,7 @@ import React from 'react';
 import './Header.scss';
 import NavItem from './NavItem/NavItem';
 import Home from '@svg/navigation/home.svg';
-import Favourites from '@svg/navigation/favorites.svg';
+import Favorites from '@svg/navigation/favorites.svg';
 import MuseumLogo from '@svg/museum-logo-light.svg';
 
 const Header: React.FC = () => {
@@ -15,7 +15,7 @@ const Header: React.FC = () => {
             <NavItem path="/" icon={Home} label="Home" />
             <NavItem
               path="/favorites"
-              icon={Favourites}
+              icon={Favorites}
               label="Your favorites"
             />
           </nav>

@@ -9,6 +9,7 @@ import SectionTitle from '@components/SectionTitle/SectionTitle';
 import './Gallery.scss';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
 import { retrieveArtistName } from '@utils/retrieveArtistInfo';
+import { useFavorites } from '@hooks/useSessionStorage';
 
 type GalleryProps = {
   data: Painting[];
@@ -20,6 +21,7 @@ const Gallery: React.FC<GalleryProps> = ({ data, itemsPerPage }) => {
   const { getCurrentData, currentPage, maxPage, next, prev, setPage } =
     usePagination(data, itemsPerPage);
   const pages: number[] = generatePageNumbers(currentPage, maxPage);
+  const [favorites, toggleFavoriteInStorage] = useFavorites();
 
   return (
     <>
@@ -37,6 +39,8 @@ const Gallery: React.FC<GalleryProps> = ({ data, itemsPerPage }) => {
             publicDomain={item.is_public_domain}
             imageId={item.image_id}
             size={CardSize.LARGE}
+            favorite={favorites.includes(item.id)}
+            toggleFavorite={() => toggleFavoriteInStorage(item.id)()}
             handleClick={() => navigate(`/paintings/${item.id}`)}
           />
         ))}

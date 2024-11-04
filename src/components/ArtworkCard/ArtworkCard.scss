@@ -8,6 +8,7 @@
     line-height: 26.3px;
     padding: 16px;
     gap: 16px;
+    cursor: pointer;
 
     &__image{
         width: 80px;
@@ -81,7 +82,7 @@
                 position: absolute;
                 bottom: 0;
                 left: 0;
-                border: solid 1px colors.$lightGrey;
+                border: solid 1px colors.$borderGrey;
                 width: 285px;
                 gap: 24px;
             }
@@ -94,6 +95,7 @@
 
         .artwork-card{
             background-color: colors.$white;
+            border: solid 1px colors.$borderGrey;
 
             &__info{
                 gap: 16px;
