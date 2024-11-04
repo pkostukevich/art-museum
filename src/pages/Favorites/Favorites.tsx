@@ -1,5 +1,6 @@
 import { fetchPaintingById } from '@api/fetchPaintings';
 import PageTitle from '@components/PageTitle/PageTitle';
+import SectionTitle from '@components/SectionTitle/SectionTitle';
 import { useFavorites } from '@hooks/useSessionStorage';
 import { Painting } from '@models/interfaces/painting.interface';
 import React, { useEffect, useState } from 'react';
@@ -25,6 +26,11 @@ const Favorites: React.FC = () => {
   return (
     <div>
       <PageTitle text="Here are your favorites" highlightedText="favorites" />
+      <SectionTitle
+        title="Your favorites list"
+        note="Saved by you"
+        align="center"
+      />
       {favorites.map((painting) => (
         <div key={painting.id}>
           <img src={painting.image_id} alt={painting.title} />
