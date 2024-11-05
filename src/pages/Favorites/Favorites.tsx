@@ -39,7 +39,11 @@ const Favorites: React.FC = () => {
           note="Saved by you"
           align="center"
         />
-        {loading ? <Loader /> : <Grid items={favorites} />}
+        {loading ? (
+          <Loader />
+        ) : (
+          <Grid items={favorites} noItemsMessage="There's nothing here yet." />
+        )}
       </section>
     </div>
   );

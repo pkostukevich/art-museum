@@ -2,4 +2,9 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 16px;
+
+    &__empty-result{
+        text-align: center;
+        width: 100%;
+    }
 }
