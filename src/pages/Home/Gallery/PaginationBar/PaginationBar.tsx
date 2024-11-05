@@ -1,5 +1,5 @@
 import React from 'react';
-import PaginationButton from '@components/PaginationBar/PaginationButton/PaginationButton';
+import PaginationButton from '@pages/Home/Gallery/PaginationBar/PaginationButton/PaginationButton';
 import ArrowRight from '@svg/arrow-right.svg';
 import ArrowLeft from '@svg/arrow-left.svg';
 import './PaginationBar.scss';

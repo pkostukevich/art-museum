@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { fetchPaintings } from '@api/fetchPaintings';
 import { Painting } from '@models/interfaces/painting.interface';
-import Gallery from '@components/Gallery/Gallery';
+import Gallery from '@pages/Home/Gallery/Gallery';
 import './Home.scss';
 import PageTitle from '@components/PageTitle/PageTitle';
 import Grid from '@components/Grid/Grid';
