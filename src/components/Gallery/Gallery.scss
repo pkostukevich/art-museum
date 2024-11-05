@@ -1,8 +1,9 @@
 .gallery{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-start;
     margin: 30px 0;
+    gap: 70px;
 
     &__empty-result{
         text-align: center;
