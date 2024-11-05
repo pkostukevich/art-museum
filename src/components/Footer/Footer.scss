@@ -1,0 +1,17 @@
+@use '@styles/colors';
+
+.footer{
+    height: 127px;
+    width: 100%;
+    background-color: colors.$white;
+
+    &__wrapper{
+        max-width: 1280px;
+        padding: 32px 0;
+        margin: auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+}

@@ -1,0 +1,15 @@
+@use '@styles/colors';
+
+.favorite-icon{
+    border-radius: 50%;
+    background-color: colors.$lightGrey;
+    height: 59px;
+    width: 59px;
+    padding: 17px;
+    box-sizing: border-box;
+    font-size: 12px;
+
+    &.favorite-icon--active{
+        background-color: colors.$transparentOrange;
+    }
+}

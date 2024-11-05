@@ -1,0 +1,37 @@
+import React from 'react';
+import ArtworkCard from '@components/ArtworkCard/ArtworkCard';
+import { useFavorites } from '@hooks/useSessionStorage';
+import { CardSize } from '@models/enums/cardSize.enum';
+import { Painting } from '@models/interfaces/painting.interface';
+import { retrieveArtistName } from '@utils/retrieveArtistInfo';
+import { NavigateFunction, useNavigate } from 'react-router-dom';
+import './Grid.scss';
+
+type GridProps = {
+  items: Painting[];
+};
+
+const Grid: React.FC<GridProps> = ({ items }) => {
+  const navigate: NavigateFunction = useNavigate();
+  const [favorites, toggleFavoriteInStorage] = useFavorites();
+
+  return (
+    <div className="grid">
+      {items.map((item) => (
+        <ArtworkCard
+          key={item.id}
+          title={item.title}
+          author={retrieveArtistName(item.artist_display)}
+          publicDomain={item.is_public_domain}
+          imageId={item.image_id}
+          size={CardSize.SMALL}
+          favorite={favorites.includes(item.id)}
+          toggleFavorite={() => toggleFavoriteInStorage(item.id)()}
+          handleClick={() => navigate(`/paintings/${item.id}`)}
+        />
+      ))}
+    </div>
+  );
+};
+
+export default Grid;

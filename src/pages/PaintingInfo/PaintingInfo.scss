@@ -1,0 +1,47 @@
+@use '@styles/colors';
+
+.painting{
+    height: 570px;
+    display: flex;
+    flex-direction: row;
+    gap: 72px;
+    margin: 120px auto;
+    position: relative;
+
+    &__image-wrapper{
+        position: relative;
+    }
+
+    &__image{
+        width: 500px;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    &__favorite{
+        position: absolute;
+        right: 16px;
+        top: 16px;
+        z-index: 2;
+    }
+
+    &__info{
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        &__artist{
+            font-size: 24px;
+            font-weight: 400;
+            color: colors.$ocher;
+            margin-bottom: 16px;
+        }
+
+        &__date{
+            font-size: 16px;
+            font-weight: 700;
+            color: colors.$grey;
+        }
+    }
+}

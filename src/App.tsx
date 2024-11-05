@@ -1,25 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import './styles/common.scss';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import Home from '@pages/Home/Home';
+import Favorites from '@pages/Favorites/Favorites';
+import Painting from '@pages/PaintingInfo/PaintingInfo';
+import Layout from './components/Layout/Layout';
+import ErrorBoundary from '@components/ErrorBoundary/ErrorBoundary';
 
-function App(): JSX.Element {
+function App(): React.ReactElement {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Layout>
+        <ErrorBoundary>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/paintings/:id" element={<Painting />} />
+            <Route path="/favorites" element={<Favorites />} />
+            <Route path="*" element={<Navigate to="/" />} />
+          </Routes>
+        </ErrorBoundary>
+      </Layout>
+    </BrowserRouter>
   );
 }
 
