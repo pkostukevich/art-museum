@@ -118,7 +118,9 @@
         }
     }
 
-    width: 100% !important;
+    @media screen and (max-width: common.$smallScreenLimit) {
+        width: 100% !important;
+    }
 }
 
 .column{
