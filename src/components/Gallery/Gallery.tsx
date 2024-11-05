@@ -18,10 +18,11 @@ type GalleryProps = {
 
 const Gallery: React.FC<GalleryProps> = ({ data, itemsPerPage }) => {
   const navigate: NavigateFunction = useNavigate();
+  const [favorites, toggleFavoriteInStorage] = useFavorites();
   const { getCurrentData, currentPage, maxPage, next, prev, setPage } =
     usePagination(data, itemsPerPage);
   const pages: number[] = generatePageNumbers(currentPage, maxPage);
-  const [favorites, toggleFavoriteInStorage] = useFavorites();
+  const paintings: Painting[] = getCurrentData();
 
   return (
     <>
@@ -31,19 +32,23 @@ const Gallery: React.FC<GalleryProps> = ({ data, itemsPerPage }) => {
         align="center"
       />
       <div className="gallery">
-        {getCurrentData().map((item) => (
-          <ArtworkCard
-            key={item.id}
-            title={item.title}
-            author={retrieveArtistName(item.artist_display)}
-            publicDomain={item.is_public_domain}
-            imageId={item.image_id}
-            size={CardSize.LARGE}
-            favorite={favorites.includes(item.id)}
-            toggleFavorite={() => toggleFavoriteInStorage(item.id)()}
-            handleClick={() => navigate(`/paintings/${item.id}`)}
-          />
-        ))}
+        {paintings.length === 0 ? (
+          <div className="gallery__empty-result">No paintings found</div>
+        ) : (
+          paintings.map((item) => (
+            <ArtworkCard
+              key={item.id}
+              title={item.title}
+              author={retrieveArtistName(item.artist_display)}
+              publicDomain={item.is_public_domain}
+              imageId={item.image_id}
+              size={CardSize.LARGE}
+              favorite={favorites.includes(item.id)}
+              toggleFavorite={() => toggleFavoriteInStorage(item.id)()}
+              handleClick={() => navigate(`/paintings/${item.id}`)}
+            />
+          ))
+        )}
       </div>
       <PaginationBar
         currentPage={currentPage}

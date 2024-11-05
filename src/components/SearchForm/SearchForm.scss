@@ -1,0 +1,19 @@
+@use '@styles/colors';
+
+.search-form{
+    margin: auto;
+    width: 762px;
+
+    &__input{
+        width: 100%;
+        height: 64px;
+        border-radius: 16px;
+        border: none;
+        background-color: colors.$borderGrey;
+        padding: 16px 64px 16px 16px;
+        box-sizing: border-box;
+        background-image: url(../../assets/svg/search.svg);
+        background-repeat: no-repeat;
+        background-position: calc(100% - 16px) 16px;
+    }
+}

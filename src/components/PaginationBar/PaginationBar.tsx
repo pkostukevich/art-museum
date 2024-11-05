@@ -39,7 +39,7 @@ const PaginationBar: React.FC<PaginationBarProps> = ({
       <PaginationButton
         content={<img src={ArrowRight} alt="next" />}
         handleClick={onNext}
-        hidden={currentPage === maxPage}
+        hidden={pages.length === 0 || currentPage === maxPage}
       />
     </div>
   );
