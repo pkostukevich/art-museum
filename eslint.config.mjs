@@ -17,7 +17,7 @@ export default [
     },
   },
   {
-    ignores: ["config-overrides.js", "webpack.config.js"]
+    ignores: ["config-overrides.js", "webpack.config.js", "jest.config.ts"],
   },
   {
     rules: {
