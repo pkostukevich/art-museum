@@ -7,6 +7,7 @@ import PageTitle from '@components/PageTitle/PageTitle';
 import Grid from '@components/Grid/Grid';
 import SectionTitle from '@components/SectionTitle/SectionTitle';
 import Loader from '@components/Loader/Loader';
+import SearchForm from '@components/SearchForm/SearchForm';
 
 const Home: React.FC = () => {
   const [paintings, setPaintings] = useState<Painting[]>([]);
@@ -23,6 +24,7 @@ const Home: React.FC = () => {
     <div className="home">
       <section className="section">
         <PageTitle text="Let's find some art here!" highlightedText="art" />
+        <SearchForm />
       </section>
       {loading ? (
         <Loader />
