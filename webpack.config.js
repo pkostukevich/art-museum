@@ -35,11 +35,11 @@ module.exports = {
           {
             loader: 'sass-loader',
             options: {
-                sassOptions: {
-                    silenceDeprecations: ['legacy-js-api'],
-                },
+              sassOptions: {
+                silenceDeprecations: ['legacy-js-api'],
+              },
             },
-        },
+          },
         ],
       },
       {

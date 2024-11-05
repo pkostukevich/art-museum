@@ -9,13 +9,16 @@ import './Grid.scss';
 
 type GridProps = {
   items: Painting[];
+  noItemsMessage?: string;
 };
 
-const Grid: React.FC<GridProps> = ({ items }) => {
+const Grid: React.FC<GridProps> = ({ items, noItemsMessage }) => {
   const navigate: NavigateFunction = useNavigate();
   const [favorites, toggleFavoriteInStorage] = useFavorites();
 
-  return (
+  return items.length === 0 ? (
+    <div className="grid__empty-result">{noItemsMessage}</div>
+  ) : (
     <div className="grid">
       {items.map((item) => (
         <ArtworkCard

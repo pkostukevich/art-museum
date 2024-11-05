@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/plugin-proposal-decorators": "^7.25.9",
     "@hookform/resolvers": "^3.9.1",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
@@ -20,6 +21,7 @@
     "react-hook-form": "^7.53.1",
     "react-router-dom": "^6.27.0",
     "react-scripts": "^5.0.1",
+    "ts-node": "^10.9.2",
     "typescript": "^5.6.3",
     "web-vitals": "^2.1.4",
     "yup": "^1.4.0"
@@ -27,7 +29,7 @@
   "scripts": {
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
-    "test": "react-app-rewired test",
+    "test": "jest",
     "eject": "react-scripts eject",
     "tscheck": "tsc",
     "lint": "eslint -c eslint.config.mjs .",
@@ -59,6 +61,7 @@
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@babel/preset-typescript": "^7.26.0",
     "@eslint/js": "^9.13.0",
+    "@testing-library/react-hooks": "^8.0.1",
     "@typescript-eslint/eslint-plugin": "^8.12.2",
     "@typescript-eslint/parser": "^8.12.2",
     "eslint": "^9.13.0",
@@ -67,12 +70,15 @@
     "eslint-plugin-react": "^7.37.2",
     "globals": "^15.11.0",
     "husky": "^8.0.0",
+    "jest-module-name-mapper": "^0.1.5",
     "pinst": "^3.0.0",
     "prettier": "3.3.3",
     "react-app-alias": "^2.2.2",
     "react-app-rewire-alias": "^1.1.7",
     "sass": "^1.80.6",
     "sass-loader": "^16.0.3",
+    "ts-jest": "^29.2.5",
+    "tsconfig-paths-jest": "^0.0.1",
     "tsconfig-paths-webpack-plugin": "^4.1.0",
     "typescript-eslint": "^8.12.2"
   },

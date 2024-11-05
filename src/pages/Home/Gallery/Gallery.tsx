@@ -2,7 +2,7 @@ import React from 'react';
 import { usePagination } from '@hooks/usePagination';
 import { Painting } from '@models/interfaces/painting.interface';
 import { generatePageNumbers } from '@utils/generatePageNumbers';
-import PaginationBar from '@components/PaginationBar/PaginationBar';
+import PaginationBar from '@pages/Home/Gallery/PaginationBar/PaginationBar';
 import ArtworkCard from '@components/ArtworkCard/ArtworkCard';
 import { CardSize } from '@models/enums/cardSize.enum';
 import SectionTitle from '@components/SectionTitle/SectionTitle';

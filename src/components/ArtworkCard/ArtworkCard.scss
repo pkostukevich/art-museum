@@ -1,4 +1,5 @@
 @use '@styles/colors';
+@use '@styles/common';
 
 .artwork-card{
     display: flex;
@@ -34,6 +35,10 @@
             overflow: hidden; 
             text-overflow: ellipsis; 
             max-width: 200px;
+
+            @media screen and (max-width: common.$smallScreenLimit) {
+                width: 100px;
+            }
         }
 
         &__author{
@@ -44,6 +49,10 @@
             overflow: hidden; 
             text-overflow: ellipsis; 
             max-width: 200px;
+
+            @media screen and (max-width: common.$smallScreenLimit) {
+                width: 100px;
+            }
         }
 
         &__description{
@@ -92,6 +101,7 @@
     &.small {
         height: 130px;
         width: 415px;
+        max-width: 100%;
 
         .artwork-card{
             background-color: colors.$white;
@@ -100,8 +110,16 @@
             &__info{
                 gap: 16px;
                 width: 288px;
+
+                @media screen and (max-width: common.$smallScreenLimit) {
+                    width: calc(100% - 80px);
+                }
             }
         }
+    }
+
+    @media screen and (max-width: common.$smallScreenLimit) {
+        width: 100% !important;
     }
 }
 

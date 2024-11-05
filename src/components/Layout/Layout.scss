@@ -1,11 +1,14 @@
 @use '@styles/colors';
+@use '@styles/common';
 
 .layout{
     background-color: colors.$lightGrey;
 
     .wrapper{
-        max-width: 1280px;
         min-height: calc(100vh - 370px);
-        margin: auto;
+
+        @media screen and (max-width: common.$smallScreenLimit) {
+            min-height: calc(100vh - 250px);
+        }
     }
 }
