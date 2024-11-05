@@ -51,7 +51,7 @@ const SearchForm: React.FC<SearchFormProps> = ({ onSearch }) => {
         className="search-form__input"
         type="text"
         {...register('search')}
-        placeholder="Search Art, Artist, Work..."
+        placeholder="Search Art..."
       />
       {errors.search && <p className="error">{errors.search.message}</p>}
     </form>
