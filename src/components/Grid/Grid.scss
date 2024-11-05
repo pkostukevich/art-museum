@@ -19,4 +19,8 @@
     @media screen and (max-width: common.$mediumScreenLimit) {
         grid-template-columns: repeat(1, 1fr);
     }
+
+    @media screen and (max-width: common.$smallScreenLimit) {
+        width: 100%;
+    }
 }

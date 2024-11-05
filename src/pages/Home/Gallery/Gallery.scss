@@ -16,4 +16,9 @@
     @media screen and (max-width: common.$largeScreenLimit) {
         gap: 80px;
     }
+
+    @media screen and (max-width: common.$smallScreenLimit) {
+        width: 100%;
+        gap: 0;
+    }
 }
