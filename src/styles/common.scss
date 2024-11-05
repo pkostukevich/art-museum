@@ -1,5 +1,11 @@
 @use '@styles/fonts';
 
+$largeScreenLimit: 1320px;
+$mediumScreenLimit: 900px;
+$smallScreenLimit: 600px;
+
+$globalPadding: 20px;
+
 body{
     font-family: 'LexendDeca';
     margin: 0;
@@ -12,4 +18,17 @@ h1, h2, h3, h4, h5, h6,p{
 
 .section{
     margin: 112px 0;
+}
+
+.content__wrapper {
+    max-width: calc(#{$largeScreenLimit} - #{$globalPadding} * 2);
+    margin: auto;
+
+    @media screen and (max-width: #{$largeScreenLimit}) {
+        max-width: calc(#{$mediumScreenLimit} - #{$globalPadding} * 2); 
+    }
+
+    @media screen and (max-width: #{$mediumScreenLimit}) {
+        max-width: calc(#{$smallScreenLimit} - #{$globalPadding} * 2); 
+    }
 }
