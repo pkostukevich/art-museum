@@ -3,4 +3,9 @@
     flex-direction: row;
     justify-content: space-between;
     margin: 30px 0;
+
+    &__empty-result{
+        text-align: center;
+        width: 100%;
+    }
 }
