@@ -8,6 +8,7 @@ import Grid from '@components/Grid/Grid';
 import SectionTitle from '@components/SectionTitle/SectionTitle';
 import Loader from '@components/Loader/Loader';
 import SearchForm from '@components/SearchForm/SearchForm';
+import useItemsPerPage from '@hooks/useItemsPerPage';
 
 const Home: React.FC = () => {
   const [loading, setLoading] = useState(true);
@@ -16,6 +17,7 @@ const Home: React.FC = () => {
     [],
   );
   const [filteredPaintings, setFilteredPaintings] = useState<Painting[]>([]);
+  const itemsPerPage: number = useItemsPerPage();
 
   useEffect(() => {
     setLoading(true);
@@ -55,7 +57,7 @@ const Home: React.FC = () => {
       ) : (
         <>
           <section className="section">
-            <Gallery data={filteredPaintings} itemsPerPage={3} />
+            <Gallery data={filteredPaintings} itemsPerPage={itemsPerPage} />
           </section>
           <section className="section">
             <SectionTitle
