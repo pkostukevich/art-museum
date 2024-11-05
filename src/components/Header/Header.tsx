@@ -8,7 +8,7 @@ import MuseumLogo from '@svg/museum-logo-light.svg';
 const Header: React.FC = () => {
   return (
     <div className="header">
-      <div className="header__wrapper">
+      <div className="header__wrapper content__wrapper">
         <img src={MuseumLogo} alt="Museum of Art logo" />
         <div>
           <nav className="header__nav">
