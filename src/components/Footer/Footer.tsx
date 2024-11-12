@@ -1,7 +1,8 @@
-import React from 'react';
-import MuseumLogo from '@svg/museum-logo-dark.svg';
-import ModsenLogo from '@svg/modsen-logo.svg';
 import './Footer.scss';
+
+import ModsenLogo from '@svg/modsen-logo.svg';
+import MuseumLogo from '@svg/museum-logo-dark.svg';
+import React from 'react';
 
 const Footer: React.FC = () => {
   return (

@@ -1,6 +1,7 @@
+import './NavItem.scss';
+
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import './NavItem.scss';
 
 type NavItemProps = {
   path: string;

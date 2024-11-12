@@ -1,5 +1,6 @@
-import React from 'react';
 import './PaginationButton.scss';
+
+import React from 'react';
 
 type PaginationButtonProps = {
   content: React.ReactNode;

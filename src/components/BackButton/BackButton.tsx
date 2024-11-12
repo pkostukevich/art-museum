@@ -1,7 +1,8 @@
-import React from 'react';
-import BackIcon from '@svg/arrow-left.svg';
-import { NavigateFunction, useNavigate } from 'react-router-dom';
 import './BackButton.scss';
+
+import BackIcon from '@svg/arrow-left.svg';
+import React from 'react';
+import { NavigateFunction, useNavigate } from 'react-router-dom';
 
 const BackButton: React.FC = () => {
   const navigate: NavigateFunction = useNavigate();

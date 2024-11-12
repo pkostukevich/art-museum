@@ -1,5 +1,5 @@
-import { getImageUrl } from '@utils/getImageUrl';
 import { canFetchImage } from '@api/canFetchImage';
+import { getImageUrl } from '@utils/getImageUrl';
 
 jest.mock('../api/canFetchImage');
 

@@ -1,5 +1,6 @@
-import React from 'react';
 import './DescriptionItem.scss';
+
+import React from 'react';
 
 type DescriptionItemProps = {
   category?: string;

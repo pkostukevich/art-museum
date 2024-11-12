@@ -1,6 +1,7 @@
-import React from 'react';
-import Favorite from '@svg/bookmark.svg';
 import './FavoriteIcon.scss';
+
+import Favorite from '@svg/bookmark.svg';
+import React from 'react';
 
 type FavoriteIconProps = {
   active: boolean;

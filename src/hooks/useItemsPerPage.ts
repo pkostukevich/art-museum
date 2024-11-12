@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
 import { useMediaQuery } from '@hooks/useMediaQuery';
+import { useEffect, useState } from 'react';
 
 export function useItemsPerPage(): number {
   const [itemsPerPage, setItemsPerPage] = useState(3);
