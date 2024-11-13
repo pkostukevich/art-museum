@@ -1,4 +1,5 @@
 import React from 'react';
+
 import './DescriptionItem.scss';
 
 type DescriptionItemProps = {

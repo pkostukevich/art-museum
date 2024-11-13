@@ -1,20 +1,22 @@
 import React, { useEffect, useState } from 'react';
-import DefaultArtwork from '@svg/default-artwork.svg';
 import { useParams } from 'react-router-dom';
-import { Painting } from '@models/interfaces/painting.interface';
+
 import { fetchPaintingById } from '@api/fetchPaintings';
-import { getImageUrl } from '@utils/getImageUrl';
-import SectionTitle from '@components/SectionTitle/SectionTitle';
+import BackButton from '@components/BackButton/BackButton';
 import DescriptionItem from '@components/DescriptionItem/DescriptionItem';
-import './PaintingInfo.scss';
 import FavoriteIcon from '@components/FavoriteIcon/FavoriteIcon';
+import Loader from '@components/Loader/Loader';
+import SectionTitle from '@components/SectionTitle/SectionTitle';
+import { useFavorites } from '@hooks/useSessionStorage';
+import { Painting } from '@models/interfaces/painting.interface';
+import DefaultArtwork from '@svg/default-artwork.svg';
+import { getImageUrl } from '@utils/getImageUrl';
 import {
   retrieveArtistName,
   retrieveArtistNationality,
 } from '@utils/retrieveArtistInfo';
-import BackButton from '@components/BackButton/BackButton';
-import { useFavorites } from '@hooks/useSessionStorage';
-import Loader from '@components/Loader/Loader';
+
+import './PaintingInfo.scss';
 
 const PaintingInfo: React.FC = () => {
   const { id } = useParams();

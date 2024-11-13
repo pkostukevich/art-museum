@@ -1,15 +1,17 @@
 import React from 'react';
-import { usePagination } from '@hooks/usePagination';
-import { Painting } from '@models/interfaces/painting.interface';
-import { generatePageNumbers } from '@utils/generatePageNumbers';
-import PaginationBar from '@pages/Home/Gallery/PaginationBar/PaginationBar';
-import ArtworkCard from '@components/ArtworkCard/ArtworkCard';
-import { CardSize } from '@models/enums/cardSize.enum';
-import SectionTitle from '@components/SectionTitle/SectionTitle';
-import './Gallery.scss';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
-import { retrieveArtistName } from '@utils/retrieveArtistInfo';
+
+import ArtworkCard from '@components/ArtworkCard/ArtworkCard';
+import SectionTitle from '@components/SectionTitle/SectionTitle';
+import { usePagination } from '@hooks/usePagination';
 import { useFavorites } from '@hooks/useSessionStorage';
+import { CardSize } from '@models/enums/cardSize.enum';
+import { Painting } from '@models/interfaces/painting.interface';
+import PaginationBar from '@pages/Home/Gallery/PaginationBar/PaginationBar';
+import { generatePageNumbers } from '@utils/generatePageNumbers';
+import { retrieveArtistName } from '@utils/retrieveArtistInfo';
+
+import './Gallery.scss';
 
 type GalleryProps = {
   data: Painting[];

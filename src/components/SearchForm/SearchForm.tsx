@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react';
-import { useDebounce } from '@hooks/useDebounce';
-import { useForm, SubmitHandler } from 'react-hook-form';
+import { SubmitHandler, useForm } from 'react-hook-form';
+
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useDebounce } from '@hooks/useDebounce';
 import * as Yup from 'yup';
+
 import './SearchForm.scss';
 
 type SearchFormInputs = {

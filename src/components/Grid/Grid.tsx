@@ -1,10 +1,12 @@
 import React from 'react';
+import { NavigateFunction, useNavigate } from 'react-router-dom';
+
 import ArtworkCard from '@components/ArtworkCard/ArtworkCard';
 import { useFavorites } from '@hooks/useSessionStorage';
 import { CardSize } from '@models/enums/cardSize.enum';
 import { Painting } from '@models/interfaces/painting.interface';
 import { retrieveArtistName } from '@utils/retrieveArtistInfo';
-import { NavigateFunction, useNavigate } from 'react-router-dom';
+
 import './Grid.scss';
 
 type GridProps = {

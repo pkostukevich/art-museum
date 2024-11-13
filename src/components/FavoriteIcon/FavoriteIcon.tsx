@@ -1,5 +1,7 @@
 import React from 'react';
+
 import Favorite from '@svg/bookmark.svg';
+
 import './FavoriteIcon.scss';
 
 type FavoriteIconProps = {

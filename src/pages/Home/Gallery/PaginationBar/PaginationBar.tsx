@@ -1,7 +1,9 @@
 import React from 'react';
+
 import PaginationButton from '@pages/Home/Gallery/PaginationBar/PaginationButton/PaginationButton';
-import ArrowRight from '@svg/arrow-right.svg';
 import ArrowLeft from '@svg/arrow-left.svg';
+import ArrowRight from '@svg/arrow-right.svg';
+
 import './PaginationBar.scss';
 
 type PaginationBarProps = {

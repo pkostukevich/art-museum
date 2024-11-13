@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react';
-import DefaultArtwork from '@svg/default-artwork.svg';
-import { CardSize } from '@models/enums/cardSize.enum';
-import './ArtworkCard.scss';
-import { getImageUrl } from '@utils/getImageUrl';
+
 import FavoriteIcon from '@components/FavoriteIcon/FavoriteIcon';
+import { CardSize } from '@models/enums/cardSize.enum';
+import DefaultArtwork from '@svg/default-artwork.svg';
+import { getImageUrl } from '@utils/getImageUrl';
+
+import './ArtworkCard.scss';
 
 type ArtworkCardProps = {
   title: string;
