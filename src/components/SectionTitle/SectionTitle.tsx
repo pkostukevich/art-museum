@@ -1,6 +1,6 @@
-import './SectionTitle.scss';
-
 import React from 'react';
+
+import './SectionTitle.scss';
 
 type SectionTitleProps = {
   title: string;

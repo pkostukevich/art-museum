@@ -1,5 +1,6 @@
-import { Painting } from '@models/interfaces/painting.interface';
 import { useState } from 'react';
+
+import { Painting } from '@models/interfaces/painting.interface';
 
 export function usePagination(
   data: Painting[],

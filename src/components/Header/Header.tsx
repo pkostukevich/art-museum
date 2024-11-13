@@ -1,11 +1,12 @@
-import './Header.scss';
+import React, { useState } from 'react';
 
 import MuseumLogo from '@svg/museum-logo-light.svg';
 import Favorites from '@svg/navigation/favorites.svg';
 import Home from '@svg/navigation/home.svg';
-import React, { useState } from 'react';
 
 import NavItem from './NavItem/NavItem';
+
+import './Header.scss';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);

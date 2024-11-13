@@ -1,4 +1,5 @@
-import './PaintingInfo.scss';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 import { fetchPaintingById } from '@api/fetchPaintings';
 import BackButton from '@components/BackButton/BackButton';
@@ -14,8 +15,8 @@ import {
   retrieveArtistName,
   retrieveArtistNationality,
 } from '@utils/retrieveArtistInfo';
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+
+import './PaintingInfo.scss';
 
 const PaintingInfo: React.FC = () => {
   const { id } = useParams();

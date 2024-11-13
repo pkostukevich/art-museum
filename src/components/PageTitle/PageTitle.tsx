@@ -1,6 +1,6 @@
-import './PageTitle.scss';
-
 import React from 'react';
+
+import './PageTitle.scss';
 
 interface PageTitleProps {
   text: string;

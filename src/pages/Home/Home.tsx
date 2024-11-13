@@ -1,4 +1,4 @@
-import './Home.scss';
+import React, { useCallback, useEffect, useState } from 'react';
 
 import { fetchPaintings } from '@api/fetchPaintings';
 import Grid from '@components/Grid/Grid';
@@ -9,7 +9,8 @@ import SectionTitle from '@components/SectionTitle/SectionTitle';
 import useItemsPerPage from '@hooks/useItemsPerPage';
 import { Painting } from '@models/interfaces/painting.interface';
 import Gallery from '@pages/Home/Gallery/Gallery';
-import React, { useCallback, useEffect, useState } from 'react';
+
+import './Home.scss';
 
 const Home: React.FC = () => {
   const [loading, setLoading] = useState(true);

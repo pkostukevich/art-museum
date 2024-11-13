@@ -1,3 +1,5 @@
+import React, { useEffect, useState } from 'react';
+
 import { fetchPaintingById } from '@api/fetchPaintings';
 import Grid from '@components/Grid/Grid';
 import Loader from '@components/Loader/Loader';
@@ -5,7 +7,6 @@ import PageTitle from '@components/PageTitle/PageTitle';
 import SectionTitle from '@components/SectionTitle/SectionTitle';
 import { useFavorites } from '@hooks/useSessionStorage';
 import { Painting } from '@models/interfaces/painting.interface';
-import React, { useEffect, useState } from 'react';
 
 const Favorites: React.FC = () => {
   const [favoriteIds] = useFavorites();

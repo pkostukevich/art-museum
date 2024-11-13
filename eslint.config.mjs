@@ -27,7 +27,15 @@ export default [
   },
   {
     rules: {
-      "simple-import-sort/imports": "error",
+      "simple-import-sort/imports": ["error", {
+      groups: [
+        ["^react"],
+        ["^antd"],
+        ["^@?\\w"],
+        ["@/(.*)"],
+        ["^[./]"]
+      ]
+    }],
       "simple-import-sort/exports": "error",
       "@typescript-eslint/explicit-function-return-type": "error", 
       "@typescript-eslint/no-unused-vars": [

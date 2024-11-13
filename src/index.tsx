@@ -1,13 +1,14 @@
-import '@styles/common.scss';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
 import ErrorBoundary from '@components/ErrorBoundary/ErrorBoundary';
 import Layout from '@components/Layout/Layout';
 import Favorites from '@pages/Favorites/Favorites';
 import Home from '@pages/Home/Home';
 import Painting from '@pages/PaintingInfo/PaintingInfo';
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+
+import '@styles/common.scss';
 
 const root: ReactDOM.Root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,

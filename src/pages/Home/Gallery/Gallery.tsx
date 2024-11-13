@@ -1,4 +1,5 @@
-import './Gallery.scss';
+import React from 'react';
+import { NavigateFunction, useNavigate } from 'react-router-dom';
 
 import ArtworkCard from '@components/ArtworkCard/ArtworkCard';
 import SectionTitle from '@components/SectionTitle/SectionTitle';
@@ -9,8 +10,8 @@ import { Painting } from '@models/interfaces/painting.interface';
 import PaginationBar from '@pages/Home/Gallery/PaginationBar/PaginationBar';
 import { generatePageNumbers } from '@utils/generatePageNumbers';
 import { retrieveArtistName } from '@utils/retrieveArtistInfo';
-import React from 'react';
-import { NavigateFunction, useNavigate } from 'react-router-dom';
+
+import './Gallery.scss';
 
 type GalleryProps = {
   data: Painting[];
