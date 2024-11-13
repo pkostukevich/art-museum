@@ -11,9 +11,11 @@ export function usePagination(
   setPage: (page: number) => void;
   getCurrentData: () => Painting[];
   currentPage: number;
+  minPage: number;
   maxPage: number;
 } {
-  const [currentPage, setCurrentPage] = useState<number>(1);
+  const minPage: number = 1;
+  const [currentPage, setCurrentPage] = useState<number>(minPage);
   const maxPage: number = Math.ceil(data.length / itemsPerPage);
 
   function getCurrentData(): Painting[] {
@@ -27,13 +29,13 @@ export function usePagination(
   }
 
   function prev(): void {
-    setCurrentPage((currentPage) => Math.max(currentPage - 1, 1));
+    setCurrentPage((currentPage) => Math.max(currentPage - 1, minPage));
   }
 
   function setPage(page: number): void {
-    const pageNumber: number = Math.max(1, page);
+    const pageNumber: number = Math.max(minPage, page);
     setCurrentPage(() => Math.min(pageNumber, maxPage));
   }
 
-  return { next, prev, setPage, getCurrentData, currentPage, maxPage };
+  return { next, prev, setPage, getCurrentData, currentPage, minPage, maxPage };
 }

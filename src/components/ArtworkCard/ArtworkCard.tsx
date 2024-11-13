@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 
 import FavoriteIcon from '@components/FavoriteIcon/FavoriteIcon';
+import { STATIC_TEXTS } from '@constants/staticTexts';
 import { CardSize } from '@models/enums/cardSize.enum';
 import DefaultArtwork from '@svg/default-artwork.svg';
 import { getImageUrl } from '@utils/getImageUrl';
@@ -46,7 +47,9 @@ const ArtworkCard: React.FC<ArtworkCardProps> = ({
             <p className="artwork-card__info__title">{title}</p>
             <p className="artwork-card__info__author">{author}</p>
             <p className="artwork-card__info__description">
-              {publicDomain ? 'Public' : 'Not public'}
+              {publicDomain
+                ? STATIC_TEXTS.artworkCard.publicDomain
+                : STATIC_TEXTS.artworkCard.notPublicDomain}
             </p>
           </div>
           <FavoriteIcon

@@ -54,6 +54,7 @@ const Gallery: React.FC<GalleryProps> = ({ data, itemsPerPage }) => {
       </div>
       <PaginationBar
         currentPage={currentPage}
+        minPage={1}
         maxPage={maxPage}
         onPrev={prev}
         onNext={next}
