@@ -19,6 +19,10 @@ const Grid: React.FC<GridProps> = ({ items, noItemsMessage }) => {
   const navigate: NavigateFunction = useNavigate();
   const [favorites, toggleFavoriteInStorage] = useFavorites();
 
+  const handleCardClick = (id: number): void => {
+    navigate(ROUTES.PAINTING_INFO + id);
+  };
+
   return items.length === 0 ? (
     <div className="grid__empty-result">{noItemsMessage}</div>
   ) : (
@@ -33,7 +37,7 @@ const Grid: React.FC<GridProps> = ({ items, noItemsMessage }) => {
           size={CardSize.SMALL}
           favorite={favorites.includes(item.id)}
           toggleFavorite={() => toggleFavoriteInStorage(item.id)()}
-          handleClick={() => navigate(ROUTES.PAINTING_INFO + item.id)}
+          handleClick={() => handleCardClick(item.id)}
         />
       ))}
     </div>

@@ -27,6 +27,10 @@ const Gallery: React.FC<GalleryProps> = ({ data, itemsPerPage }) => {
   const pages: number[] = generatePageNumbers(currentPage, maxPage);
   const paintings: Painting[] = getCurrentData();
 
+  const handleCardClick = (id: number): void => {
+    navigate(ROUTES.PAINTING_INFO + id);
+  };
+
   return (
     <>
       <SectionTitle
@@ -48,7 +52,7 @@ const Gallery: React.FC<GalleryProps> = ({ data, itemsPerPage }) => {
               size={CardSize.LARGE}
               favorite={favorites.includes(item.id)}
               toggleFavorite={() => toggleFavoriteInStorage(item.id)()}
-              handleClick={() => navigate(ROUTES.PAINTING_INFO + item.id)}
+              handleClick={() => handleCardClick(item.id)}
             />
           ))
         )}

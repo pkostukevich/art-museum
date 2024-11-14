@@ -59,7 +59,7 @@ const PaintingInfo: React.FC = () => {
             <div className="painting__favorite">
               <FavoriteIcon
                 active={favorites.includes(Number(id))}
-                toggleActive={() => toggleFavoriteInStorage(Number(id))()}
+                toggleActive={toggleFavoriteInStorage(Number(id))}
               />
             </div>
           </div>
