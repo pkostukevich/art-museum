@@ -205,6 +205,7 @@ export default {
     '^@fonts/(.*)$': '<rootDir>/src/assets/fonts/$1',
     '^@models/(.*)$': '<rootDir>/src/models/$1',
     '^@pages/(.*)$': '<rootDir>/src/pages/$1',
+    '^@router/(.*)$': '<rootDir>/src/router/$1',
     '^@store/(.*)$': '<rootDir>/src/store/$1',
     '^@styles/(.*)$': '<rootDir>/src/styles/$1',
     '^@svg/(.*)$': '<rootDir>/src/assets/svg/$1',

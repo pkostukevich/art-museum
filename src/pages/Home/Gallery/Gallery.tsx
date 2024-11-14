@@ -3,6 +3,7 @@ import { NavigateFunction, useNavigate } from 'react-router-dom';
 
 import ArtworkCard from '@components/ArtworkCard/ArtworkCard';
 import SectionTitle from '@components/SectionTitle/SectionTitle';
+import { ROUTES } from '@constants/routes';
 import { usePagination } from '@hooks/usePagination';
 import { useFavorites } from '@hooks/useSessionStorage';
 import { CardSize } from '@models/enums/cardSize.enum';
@@ -47,7 +48,7 @@ const Gallery: React.FC<GalleryProps> = ({ data, itemsPerPage }) => {
               size={CardSize.LARGE}
               favorite={favorites.includes(item.id)}
               toggleFavorite={() => toggleFavoriteInStorage(item.id)()}
-              handleClick={() => navigate(`/paintings/${item.id}`)}
+              handleClick={() => navigate(ROUTES.PAINTING_INFO + item.id)}
             />
           ))
         )}

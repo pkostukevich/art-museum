@@ -2,6 +2,7 @@ import React from 'react';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
 
 import ArtworkCard from '@components/ArtworkCard/ArtworkCard';
+import { ROUTES } from '@constants/routes';
 import { useFavorites } from '@hooks/useSessionStorage';
 import { CardSize } from '@models/enums/cardSize.enum';
 import { Painting } from '@models/interfaces/painting.interface';
@@ -32,7 +33,7 @@ const Grid: React.FC<GridProps> = ({ items, noItemsMessage }) => {
           size={CardSize.SMALL}
           favorite={favorites.includes(item.id)}
           toggleFavorite={() => toggleFavoriteInStorage(item.id)()}
-          handleClick={() => navigate(`/paintings/${item.id}`)}
+          handleClick={() => navigate(ROUTES.PAINTING_INFO + item.id)}
         />
       ))}
     </div>

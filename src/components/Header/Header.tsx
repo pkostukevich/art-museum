@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import { ROUTES } from '@constants/routes';
+import { NavItemInterface } from '@models/interfaces/navItem.interface';
 import MuseumLogo from '@svg/museum-logo-light.svg';
 import Favorites from '@svg/navigation/favorites.svg';
 import Home from '@svg/navigation/home.svg';
@@ -7,6 +9,19 @@ import Home from '@svg/navigation/home.svg';
 import NavItem from './NavItem/NavItem';
 
 import './Header.scss';
+
+const navItems: NavItemInterface[] = [
+  {
+    path: ROUTES.HOME,
+    icon: Home,
+    label: 'Home',
+  },
+  {
+    path: ROUTES.FAVORITES,
+    icon: Favorites,
+    label: 'Your favorites',
+  },
+];
 
 const Header: React.FC = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
@@ -25,18 +40,17 @@ const Header: React.FC = () => {
         />
         <div>
           <nav className={`header__nav ${isMenuOpen ? 'open' : ''}`}>
-            <NavItem
-              path="/"
-              icon={Home}
-              label="Home"
-              handleClick={toggleMenu}
-            />
-            <NavItem
-              path="/favorites"
-              icon={Favorites}
-              label="Your favorites"
-              handleClick={toggleMenu}
-            />
+            {navItems.map(
+              ({ path, icon, label }: NavItemInterface, index: number) => (
+                <NavItem
+                  key={index}
+                  path={path}
+                  icon={icon}
+                  label={label}
+                  handleClick={toggleMenu}
+                />
+              ),
+            )}
           </nav>
           <div className="header__burger-menu" onClick={toggleMenu}>
             <div
