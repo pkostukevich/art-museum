@@ -8,6 +8,7 @@ import './PaginationBar.scss';
 
 type PaginationBarProps = {
   currentPage: number;
+  minPage: number;
   maxPage: number;
   onPrev: () => void;
   onNext: () => void;
@@ -17,6 +18,7 @@ type PaginationBarProps = {
 
 const PaginationBar: React.FC<PaginationBarProps> = ({
   currentPage,
+  minPage,
   maxPage,
   onPrev,
   onNext,
@@ -28,7 +30,7 @@ const PaginationBar: React.FC<PaginationBarProps> = ({
       <PaginationButton
         content={<img src={ArrowLeft} alt="prev" />}
         handleClick={onPrev}
-        hidden={currentPage === 1}
+        hidden={currentPage === minPage}
       />
       {pages.map((page: number) => (
         <PaginationButton

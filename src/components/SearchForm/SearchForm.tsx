@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
+import { DEBOUNCE_DELAY } from '@constants/debounce';
+import { STATIC_TEXTS } from '@constants/staticTexts';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useDebounce } from '@hooks/useDebounce';
 import * as Yup from 'yup';
@@ -35,7 +37,10 @@ const SearchForm: React.FC<SearchFormProps> = ({ onSearch }) => {
   });
 
   const searchTerm: string | undefined = watch('search');
-  const debouncedSearchTerm: string | undefined = useDebounce(searchTerm, 300);
+  const debouncedSearchTerm: string | undefined = useDebounce(
+    searchTerm,
+    DEBOUNCE_DELAY,
+  );
 
   useEffect(() => {
     if (debouncedSearchTerm !== undefined) {
@@ -53,7 +58,7 @@ const SearchForm: React.FC<SearchFormProps> = ({ onSearch }) => {
         className="search-form__input"
         type="text"
         {...register('search')}
-        placeholder="Search Art..."
+        placeholder={STATIC_TEXTS.searchForm.placeholder}
       />
       {errors.search && <p className="error">{errors.search.message}</p>}
     </form>

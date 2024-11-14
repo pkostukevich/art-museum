@@ -7,6 +7,7 @@ import DescriptionItem from '@components/DescriptionItem/DescriptionItem';
 import FavoriteIcon from '@components/FavoriteIcon/FavoriteIcon';
 import Loader from '@components/Loader/Loader';
 import SectionTitle from '@components/SectionTitle/SectionTitle';
+import { STATIC_TEXTS } from '@constants/staticTexts';
 import { useFavorites } from '@hooks/useSessionStorage';
 import { Painting } from '@models/interfaces/painting.interface';
 import DefaultArtwork from '@svg/default-artwork.svg';
@@ -52,13 +53,13 @@ const PaintingInfo: React.FC = () => {
           <div className="painting__image-wrapper">
             <img
               src={imageSrc}
-              alt={painting?.title || 'painting not found'}
+              alt={painting?.title || STATIC_TEXTS.paintingInfo.notFound}
               className="painting__image"
             />
             <div className="painting__favorite">
               <FavoriteIcon
                 active={favorites.includes(Number(id))}
-                toggleActive={() => toggleFavoriteInStorage(Number(id))()}
+                toggleActive={toggleFavoriteInStorage(Number(id))}
               />
             </div>
           </div>
@@ -86,7 +87,11 @@ const PaintingInfo: React.FC = () => {
                   value={painting.credit_line}
                 />
                 <DescriptionItem
-                  value={painting.is_public_domain ? 'Public' : 'Not public'}
+                  value={
+                    painting.is_public_domain
+                      ? STATIC_TEXTS.artworkCard.publicDomain
+                      : STATIC_TEXTS.artworkCard.notPublicDomain
+                  }
                 />
               </div>
             </div>

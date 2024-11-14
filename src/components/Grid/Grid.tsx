@@ -2,6 +2,7 @@ import React from 'react';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
 
 import ArtworkCard from '@components/ArtworkCard/ArtworkCard';
+import { ROUTES } from '@constants/routes';
 import { useFavorites } from '@hooks/useSessionStorage';
 import { CardSize } from '@models/enums/cardSize.enum';
 import { Painting } from '@models/interfaces/painting.interface';
@@ -18,6 +19,10 @@ const Grid: React.FC<GridProps> = ({ items, noItemsMessage }) => {
   const navigate: NavigateFunction = useNavigate();
   const [favorites, toggleFavoriteInStorage] = useFavorites();
 
+  const handleCardClick = (id: number): void => {
+    navigate(ROUTES.PAINTING_INFO + id);
+  };
+
   return items.length === 0 ? (
     <div className="grid__empty-result">{noItemsMessage}</div>
   ) : (
@@ -32,7 +37,7 @@ const Grid: React.FC<GridProps> = ({ items, noItemsMessage }) => {
           size={CardSize.SMALL}
           favorite={favorites.includes(item.id)}
           toggleFavorite={() => toggleFavoriteInStorage(item.id)()}
-          handleClick={() => navigate(`/paintings/${item.id}`)}
+          handleClick={() => handleCardClick(item.id)}
         />
       ))}
     </div>
