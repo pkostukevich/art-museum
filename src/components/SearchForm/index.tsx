@@ -7,7 +7,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useDebounce } from '@hooks/useDebounce';
 import * as Yup from 'yup';
 
-import './SearchForm.scss';
+import { ErrorMessage, SearchFormContainer, SearchInput } from './styled';
 
 type SearchFormInputs = {
   search?: string;
@@ -53,15 +53,14 @@ const SearchForm: React.FC<SearchFormProps> = ({ onSearch }) => {
   };
 
   return (
-    <form className="search-form" onSubmit={handleSubmit(onSubmit)}>
-      <input
-        className="search-form__input"
+    <SearchFormContainer onSubmit={handleSubmit(onSubmit)}>
+      <SearchInput
         type="text"
         {...register('search')}
         placeholder={STATIC_TEXTS.searchForm.placeholder}
       />
-      {errors.search && <p className="error">{errors.search.message}</p>}
-    </form>
+      {errors.search && <ErrorMessage>{errors.search.message}</ErrorMessage>}
+    </SearchFormContainer>
   );
 };
 

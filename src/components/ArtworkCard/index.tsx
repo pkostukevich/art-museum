@@ -6,7 +6,16 @@ import { CardSize } from '@models/enums/cardSize.enum';
 import DefaultArtwork from '@svg/default-artwork.svg';
 import { getImageUrl } from '@utils/getImageUrl';
 
-import './ArtworkCard.scss';
+import {
+  Author,
+  Card,
+  Column,
+  Description,
+  ImageContainer,
+  Info,
+  Title,
+  Wrapper,
+} from './styled';
 
 type ArtworkCardProps = {
   title: string;
@@ -39,19 +48,19 @@ const ArtworkCard: React.FC<ArtworkCardProps> = ({
   }, [imageId]);
 
   return (
-    <div className={`artwork-card__wrapper ${size}`} onClick={handleClick}>
-      <div className="artwork-card">
-        <img src={imageSrc} className="artwork-card__image" alt={title} />
-        <div className="artwork-card__info">
-          <div className="column">
-            <p className="artwork-card__info__title">{title}</p>
-            <p className="artwork-card__info__author">{author}</p>
-            <p className="artwork-card__info__description">
+    <Wrapper size={size} onClick={handleClick}>
+      <Card size={size}>
+        <ImageContainer src={imageSrc} />
+        <Info>
+          <Column>
+            <Title>{title}</Title>
+            <Author>{author}</Author>
+            <Description>
               {publicDomain
                 ? STATIC_TEXTS.artworkCard.publicDomain
                 : STATIC_TEXTS.artworkCard.notPublicDomain}
-            </p>
-          </div>
+            </Description>
+          </Column>
           <FavoriteIcon
             active={favorite}
             toggleActive={(e: React.MouseEvent) => {
@@ -59,9 +68,9 @@ const ArtworkCard: React.FC<ArtworkCardProps> = ({
               toggleFavorite();
             }}
           />
-        </div>
-      </div>
-    </div>
+        </Info>
+      </Card>
+    </Wrapper>
   );
 };
 

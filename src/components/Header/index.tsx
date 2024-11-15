@@ -7,8 +7,13 @@ import Favorites from '@svg/navigation/favorites.svg';
 import Home from '@svg/navigation/home.svg';
 
 import NavItem from './NavItem';
-
-import './Header.scss';
+import {
+  BurgerLine,
+  BurgerMenu,
+  HeaderContainer,
+  HeaderWrapper,
+  Nav,
+} from './styled';
 
 const navItems: NavItemInterface[] = [
   {
@@ -31,41 +36,33 @@ const Header: React.FC = () => {
   };
 
   return (
-    <div className="header">
-      <div className="header__wrapper content__wrapper">
+    <HeaderContainer>
+      <HeaderWrapper>
         <img
           src={MuseumLogo}
           alt="Museum of Art logo"
-          className="header__logo"
+          style={{ width: '150px' }}
         />
         <div>
-          <nav className={`header__nav ${isMenuOpen ? 'open' : ''}`}>
-            {navItems.map(
-              ({ path, icon, label }: NavItemInterface, index: number) => (
-                <NavItem
-                  key={index}
-                  path={path}
-                  icon={icon}
-                  label={label}
-                  handleClick={toggleMenu}
-                />
-              ),
-            )}
-          </nav>
-          <div className="header__burger-menu" onClick={toggleMenu}>
-            <div
-              className={`header__burger-menu__line ${isMenuOpen ? 'open' : ''}`}
-            ></div>
-            <div
-              className={`header__burger-menu__line ${isMenuOpen ? 'open' : ''}`}
-            ></div>
-            <div
-              className={`header__burger-menu__line ${isMenuOpen ? 'open' : ''}`}
-            ></div>
-          </div>
+          <Nav isOpen={isMenuOpen}>
+            {navItems.map(({ path, icon, label }, index) => (
+              <NavItem
+                key={index}
+                path={path}
+                icon={icon}
+                label={label}
+                handleClick={toggleMenu}
+              />
+            ))}
+          </Nav>
+          <BurgerMenu onClick={toggleMenu}>
+            <BurgerLine isOpen={isMenuOpen} />
+            <BurgerLine isOpen={isMenuOpen} />
+            <BurgerLine isOpen={isMenuOpen} />
+          </BurgerMenu>
         </div>
-      </div>
-    </div>
+      </HeaderWrapper>
+    </HeaderContainer>
   );
 };
 

@@ -3,7 +3,7 @@ import React from 'react';
 import Footer from '@components/Footer';
 import Header from '@components/Header';
 
-import './Layout.scss';
+import { ContentWrapper, LayoutContainer } from './styled';
 
 type LayoutProps = {
   children: React.ReactNode;
@@ -11,11 +11,11 @@ type LayoutProps = {
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
-    <div className="layout">
+    <LayoutContainer>
       <Header />
-      <div className="wrapper content__wrapper">{children}</div>
+      <ContentWrapper>{children}</ContentWrapper>
       <Footer />
-    </div>
+    </LayoutContainer>
   );
 };
 

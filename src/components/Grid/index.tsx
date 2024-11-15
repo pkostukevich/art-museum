@@ -8,7 +8,7 @@ import { CardSize } from '@models/enums/cardSize.enum';
 import { Painting } from '@models/interfaces/painting.interface';
 import { retrieveArtistName } from '@utils/retrieveArtistInfo';
 
-import './Grid.scss';
+import { EmptyResult, GridContainer } from './styled';
 
 type GridProps = {
   items: Painting[];
@@ -24,9 +24,9 @@ const Grid: React.FC<GridProps> = ({ items, noItemsMessage }) => {
   };
 
   return items.length === 0 ? (
-    <div className="grid__empty-result">{noItemsMessage}</div>
+    <EmptyResult>{noItemsMessage}</EmptyResult>
   ) : (
-    <div className="grid">
+    <GridContainer>
       {items.map((item) => (
         <ArtworkCard
           key={item.id}
@@ -40,7 +40,7 @@ const Grid: React.FC<GridProps> = ({ items, noItemsMessage }) => {
           handleClick={() => handleCardClick(item.id)}
         />
       ))}
-    </div>
+    </GridContainer>
   );
 };
 

@@ -3,16 +3,16 @@ import React from 'react';
 import ModsenLogo from '@svg/modsen-logo.svg';
 import MuseumLogo from '@svg/museum-logo-dark.svg';
 
-import './Footer.scss';
+import { FooterContainer, FooterWrapper } from './styled';
 
 const Footer: React.FC = () => {
   return (
-    <div className="footer">
-      <div className="footer__wrapper content__wrapper">
+    <FooterContainer>
+      <FooterWrapper>
         <img src={MuseumLogo} alt="Museum of Art logo" />
         <img src={ModsenLogo} alt="Modsen logo" />
-      </div>
-    </div>
+      </FooterWrapper>
+    </FooterContainer>
   );
 };
 

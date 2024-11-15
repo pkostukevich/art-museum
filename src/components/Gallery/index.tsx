@@ -12,7 +12,7 @@ import { Painting } from '@models/interfaces/painting.interface';
 import { generatePageNumbers } from '@utils/generatePageNumbers';
 import { retrieveArtistName } from '@utils/retrieveArtistInfo';
 
-import './Gallery.scss';
+import { EmptyResult, GalleryContainer } from './styled';
 
 type GalleryProps = {
   data: Painting[];
@@ -38,9 +38,9 @@ const Gallery: React.FC<GalleryProps> = ({ data, itemsPerPage }) => {
         note="Topics for you"
         align="center"
       />
-      <div className="gallery">
+      <GalleryContainer>
         {paintings.length === 0 ? (
-          <div className="gallery__empty-result">No paintings found</div>
+          <EmptyResult>No paintings found</EmptyResult>
         ) : (
           paintings.map((item) => (
             <ArtworkCard
@@ -56,7 +56,7 @@ const Gallery: React.FC<GalleryProps> = ({ data, itemsPerPage }) => {
             />
           ))
         )}
-      </div>
+      </GalleryContainer>
       <PaginationBar
         currentPage={currentPage}
         minPage={1}

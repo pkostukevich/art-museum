@@ -4,7 +4,7 @@ import { NavigateFunction, useNavigate } from 'react-router-dom';
 import { STATIC_TEXTS } from '@constants/staticTexts';
 import BackIcon from '@svg/arrow-left.svg';
 
-import './BackButton.scss';
+import { BackButtonWrapper } from './styled';
 
 const BackButton: React.FC = () => {
   const navigate: NavigateFunction = useNavigate();
@@ -14,10 +14,10 @@ const BackButton: React.FC = () => {
   };
 
   return (
-    <div className="back-button" onClick={handleBackClick}>
+    <BackButtonWrapper onClick={handleBackClick}>
       <img src={BackIcon} alt={STATIC_TEXTS.backButton.label} />
       <span>{STATIC_TEXTS.backButton.label}</span>
-    </div>
+    </BackButtonWrapper>
   );
 };
 

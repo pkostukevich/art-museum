@@ -7,6 +7,7 @@ import PageTitle from '@components/PageTitle';
 import SectionTitle from '@components/SectionTitle';
 import { useFavorites } from '@hooks/useSessionStorage';
 import { Painting } from '@models/interfaces/painting.interface';
+import { Section } from '@styles/common';
 
 const Favorites: React.FC = () => {
   const [favoriteIds] = useFavorites();
@@ -30,11 +31,11 @@ const Favorites: React.FC = () => {
   }, [favoriteIds]);
 
   return (
-    <div>
-      <section className="section">
+    <>
+      <Section>
         <PageTitle text="Here are your favorites" highlightedText="favorites" />
-      </section>
-      <section className="section">
+      </Section>
+      <Section>
         <SectionTitle
           title="Your favorites list"
           note="Saved by you"
@@ -45,8 +46,8 @@ const Favorites: React.FC = () => {
         ) : (
           <Grid items={favorites} noItemsMessage="There's nothing here yet." />
         )}
-      </section>
-    </div>
+      </Section>
+    </>
   );
 };
 

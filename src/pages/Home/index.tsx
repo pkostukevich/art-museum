@@ -10,8 +10,7 @@ import SectionTitle from '@components/SectionTitle';
 import { ITEMS_LIMIT } from '@constants/itemsPerPage';
 import useItemsPerPage from '@hooks/useItemsPerPage';
 import { Painting } from '@models/interfaces/painting.interface';
-
-import './Home.scss';
+import { Section } from '@styles/common';
 
 const Home: React.FC = () => {
   const [loading, setLoading] = useState(true);
@@ -51,29 +50,29 @@ const Home: React.FC = () => {
   );
 
   return (
-    <div className="home">
-      <section className="section">
+    <>
+      <Section>
         <PageTitle text="Let's find some art here!" highlightedText="art" />
         <SearchForm onSearch={handleSearch} />
-      </section>
+      </Section>
       {loading ? (
         <Loader />
       ) : (
         <>
-          <section className="section">
+          <Section>
             <Gallery data={filteredPaintings} itemsPerPage={itemsPerPage} />
-          </section>
-          <section className="section">
+          </Section>
+          <Section>
             <SectionTitle
               title="Other works for you"
               note="Here some more"
               align="center"
             />
             <Grid items={recommendedPaintings} />
-          </section>
+          </Section>
         </>
       )}
-    </div>
+    </>
   );
 };
 

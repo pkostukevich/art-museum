@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './PageTitle.scss';
+import { HighlightedText, Title } from './styled';
 
 interface PageTitleProps {
   text: string;
@@ -9,16 +9,17 @@ interface PageTitleProps {
 
 const PageTitle: React.FC<PageTitleProps> = ({ text, highlightedText }) => {
   return (
-    <h1 className="page-title">
-      {text.split(' ').map((word, index) => (
-        <span
-          key={index}
-          className={word === highlightedText ? 'page-title--highlighted' : ''}
-        >
-          {word}{' '}
-        </span>
-      ))}
-    </h1>
+    <Title>
+      {text
+        .split(' ')
+        .map((word, index) =>
+          word === highlightedText ? (
+            <HighlightedText key={index}>{word} </HighlightedText>
+          ) : (
+            <span key={index}>{word} </span>
+          ),
+        )}
+    </Title>
   );
 };
 

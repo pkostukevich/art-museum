@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './PaginationButton.scss';
+import { Button } from './styled';
 
 type PaginationButtonProps = {
   content: React.ReactNode;
@@ -16,13 +16,14 @@ const PaginationButton: React.FC<PaginationButtonProps> = ({
   active = false,
 }) => {
   return (
-    <button
-      className={`pagination__button ${active ? 'active' : ''} ${hidden ? 'hidden' : ''}`}
+    <Button
       onClick={handleClick}
+      hidden={hidden}
+      active={active}
       disabled={hidden}
     >
       {content}
-    </button>
+    </Button>
   );
 };
 

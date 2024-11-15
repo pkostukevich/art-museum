@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './DescriptionItem.scss';
+import { Category, DescriptionWrapper, Value } from './styled';
 
 type DescriptionItemProps = {
   category?: string;
@@ -12,10 +12,10 @@ const DescriptionItem: React.FC<DescriptionItemProps> = ({
   value,
 }) => {
   return (
-    <div className="description-item">
-      <span className="description-item__category">{category}</span>
-      <span className="description-item__value">{value}</span>
-    </div>
+    <DescriptionWrapper>
+      <Category>{category}</Category>
+      <Value>{value}</Value>
+    </DescriptionWrapper>
   );
 };
 

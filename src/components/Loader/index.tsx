@@ -1,9 +1,9 @@
 import React from 'react';
 
-import './Loader.scss';
+import { Spinner } from './styled';
 
 const Loader: React.FC = () => {
-  return <div className="loader"></div>;
+  return <Spinner />;
 };
 
 export default Loader;

@@ -1,7 +1,6 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 
-import './NavItem.scss';
+import { StyledNavLink } from './styled';
 
 type NavItemProps = {
   path: string;
@@ -17,14 +16,14 @@ const NavItem: React.FC<NavItemProps> = ({
   handleClick,
 }) => {
   return (
-    <NavLink
+    <StyledNavLink
       to={path}
-      className={({ isActive }) => (isActive ? 'hidden' : '')}
+      hidden={false} // TODO
       onClick={handleClick}
     >
       <img src={icon} alt={label} />
       <span>{label}</span>
-    </NavLink>
+    </StyledNavLink>
   );
 };
 

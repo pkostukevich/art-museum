@@ -4,7 +4,7 @@ import PaginationButton from '@components/Gallery/PaginationBar/PaginationButton
 import ArrowLeft from '@svg/arrow-left.svg';
 import ArrowRight from '@svg/arrow-right.svg';
 
-import './PaginationBar.scss';
+import { PaginationBarWrapper } from './styled';
 
 type PaginationBarProps = {
   currentPage: number;
@@ -26,7 +26,7 @@ const PaginationBar: React.FC<PaginationBarProps> = ({
   pages,
 }) => {
   return (
-    <div className="pagination-bar">
+    <PaginationBarWrapper>
       <PaginationButton
         content={<img src={ArrowLeft} alt="prev" />}
         handleClick={onPrev}
@@ -45,7 +45,7 @@ const PaginationBar: React.FC<PaginationBarProps> = ({
         handleClick={onNext}
         hidden={pages.length === 0 || currentPage === maxPage}
       />
-    </div>
+    </PaginationBarWrapper>
   );
 };
 

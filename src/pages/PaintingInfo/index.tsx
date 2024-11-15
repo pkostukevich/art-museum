@@ -2,22 +2,22 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { fetchPaintingById } from '@api/fetchPaintings';
+import ArtworkOverview from '@components/ArtworkOverview';
 import BackButton from '@components/BackButton';
-import DescriptionItem from '@components/DescriptionItem';
 import FavoriteIcon from '@components/FavoriteIcon';
 import Loader from '@components/Loader';
-import SectionTitle from '@components/SectionTitle';
 import { STATIC_TEXTS } from '@constants/staticTexts';
 import { useFavorites } from '@hooks/useSessionStorage';
 import { Painting } from '@models/interfaces/painting.interface';
 import DefaultArtwork from '@svg/default-artwork.svg';
 import { getImageUrl } from '@utils/getImageUrl';
-import {
-  retrieveArtistName,
-  retrieveArtistNationality,
-} from '@utils/retrieveArtistInfo';
 
-import './PaintingInfo.scss';
+import {
+  FavoriteWrapper,
+  ImageWrapper,
+  PaintingContainer,
+  PaintingImage,
+} from './styled';
 
 const PaintingInfo: React.FC = () => {
   const { id } = useParams();
@@ -32,7 +32,6 @@ const PaintingInfo: React.FC = () => {
       fetchPaintingById(id)
         .then((data: Painting) => {
           setPainting(data);
-
           const imageId: string = data.image_id;
           getImageUrl(imageId).then((url) => {
             const src: string = url ? url : DefaultArtwork;
@@ -44,61 +43,37 @@ const PaintingInfo: React.FC = () => {
   }, [id]);
 
   return (
-    <div className="painting">
+    <PaintingContainer>
       <BackButton />
       {loading ? (
         <Loader />
       ) : (
         <>
-          <div className="painting__image-wrapper">
-            <img
+          <ImageWrapper>
+            <PaintingImage
               src={imageSrc}
               alt={painting?.title || STATIC_TEXTS.paintingInfo.notFound}
-              className="painting__image"
             />
-            <div className="painting__favorite">
+            <FavoriteWrapper>
               <FavoriteIcon
                 active={favorites.includes(Number(id))}
-                toggleActive={toggleFavoriteInStorage(Number(id))}
+                toggleActive={() => toggleFavoriteInStorage(Number(id))}
               />
-            </div>
-          </div>
+            </FavoriteWrapper>
+          </ImageWrapper>
           {painting && (
-            <div className="painting__info">
-              <div>
-                <SectionTitle title={painting.title} align="left" />
-                <p className="painting__info__artist">
-                  {retrieveArtistName(painting.artist_display)}
-                </p>
-                <p className="painting__info__date">{painting.date_display}</p>
-              </div>
-              <div>
-                <SectionTitle title="Overwiev" align="left" />
-                <DescriptionItem
-                  category="Artist nationality:"
-                  value={retrieveArtistNationality(painting.artist_display)}
-                />
-                <DescriptionItem
-                  category="Dimensions: Sheet:"
-                  value={painting.dimensions}
-                />
-                <DescriptionItem
-                  category="Credit Line:"
-                  value={painting.credit_line}
-                />
-                <DescriptionItem
-                  value={
-                    painting.is_public_domain
-                      ? STATIC_TEXTS.artworkCard.publicDomain
-                      : STATIC_TEXTS.artworkCard.notPublicDomain
-                  }
-                />
-              </div>
-            </div>
+            <ArtworkOverview
+              title={painting.title}
+              artist_display={painting.artist_display}
+              date_display={painting.date_display}
+              dimensions={painting.dimensions}
+              credit_line={painting.credit_line}
+              is_public_domain={painting.is_public_domain}
+            />
           )}
         </>
       )}
-    </div>
+    </PaintingContainer>
   );
 };
 

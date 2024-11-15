@@ -2,7 +2,7 @@ import React from 'react';
 
 import Favorite from '@svg/bookmark.svg';
 
-import './FavoriteIcon.scss';
+import { IconWrapper } from './styled';
 
 type FavoriteIconProps = {
   active: boolean;
@@ -14,12 +14,9 @@ const FavoriteIcon: React.FC<FavoriteIconProps> = ({
   toggleActive,
 }) => {
   return (
-    <div
-      className={`favorite-icon ${active ? 'favorite-icon--active' : ''}`}
-      onClick={toggleActive}
-    >
+    <IconWrapper active={active} onClick={toggleActive}>
       <img src={Favorite} alt="favorite" />
-    </div>
+    </IconWrapper>
   );
 };
 

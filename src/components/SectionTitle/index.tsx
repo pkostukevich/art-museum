@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './SectionTitle.scss';
+import { MainTitle, Note, SectionTitleWrapper } from './styled';
 
 type SectionTitleProps = {
   title: string;
@@ -10,10 +10,10 @@ type SectionTitleProps = {
 
 const SectionTitle: React.FC<SectionTitleProps> = ({ title, note, align }) => {
   return (
-    <div className={`section-title section-title--${align}`}>
-      <p className="section-title__note">{note}</p>
-      <p className="section-title__main">{title}</p>
-    </div>
+    <SectionTitleWrapper align={align}>
+      <Note>{note}</Note>
+      <MainTitle>{title}</MainTitle>
+    </SectionTitleWrapper>
   );
 };
 
