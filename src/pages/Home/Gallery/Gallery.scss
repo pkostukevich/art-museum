@@ -1,9 +1,7 @@
-@use '@styles/common';
+@import '@styles/common';
 
 .gallery{
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
+    @include flex-container(row, flex-start, flex-start);
     margin: 30px auto;
     gap: 70px;
     width: fit-content;
@@ -13,11 +11,11 @@
         width: 100%;
     }
 
-    @media screen and (max-width: common.$largeScreenLimit) {
+    @media screen and (max-width: $largeScreenLimit) {
         gap: 80px;
     }
 
-    @media screen and (max-width: common.$smallScreenLimit) {
+    @media screen and (max-width: $smallScreenLimit) {
         width: 100%;
         gap: 0;
     }

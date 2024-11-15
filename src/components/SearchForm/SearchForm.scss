@@ -1,5 +1,4 @@
-@use '@styles/colors';
-@use '@styles/common';
+@import '@styles/common';
 
 .search-form{
     margin: auto;
@@ -11,7 +10,7 @@
         height: 64px;
         border-radius: 16px;
         border: none;
-        background-color: colors.$borderGrey;
+        background-color: $borderGrey;
         padding: 16px 64px 16px 16px;
         box-sizing: border-box;
         background-image: url(../../assets/svg/search.svg);
@@ -19,7 +18,7 @@
         background-position: calc(100% - 16px) 16px;
     }
 
-    @media screen and (max-width: common.$smallScreenLimit) {
+    @media screen and (max-width: $smallScreenLimit) {
         width: 100%;
     }
 }

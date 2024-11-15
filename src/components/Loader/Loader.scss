@@ -1,8 +1,8 @@
-@use '@styles/colors';
+@import '@styles/common';
 
 .loader {
-    border: 8px solid colors.$lightGrey; 
-    border-top: 8px solid colors.$orange; 
+    border: 8px solid $lightGrey; 
+    border-top: 8px solid $orange; 
     border-radius: 50%;
     width: 40px;
     height: 40px;

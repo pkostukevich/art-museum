@@ -1,4 +1,10 @@
-@use '@styles/fonts';
+@forward '@styles/colors';
+
+@use '@styles/colors' as *;;
+@import '@styles/mixins';
+@import '@styles/fonts';
+
+// @forward '@styles/colors';
 
 $largeScreenLimit: 1320px;
 $mediumScreenLimit: 900px;

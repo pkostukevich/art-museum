@@ -1,4 +1,4 @@
-@use '@styles/common';
+@import '@styles/common';
 
 .header{
     height: 127px;
@@ -7,15 +7,11 @@
 
     &__wrapper{
         padding: 32px 0;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
+        @include flex-container;
     }
 
     &__nav{
-        display: flex;
-        flex-direction: row;
+        @include flex-row;
         gap: 16px;
     }
 
@@ -32,7 +28,7 @@
         }
     }
 
-    @media screen and (max-width: common.$smallScreenLimit) {
+    @media screen and (max-width: $smallScreenLimit) {
         height: 96px;
 
         &__wrapper{
@@ -45,8 +41,6 @@
 
         &__nav {
             display: none;
-            flex-direction: row;
-            justify-content: space-around;
             background: linear-gradient(90deg, #343333 17%, #484848 59%, #282828 99%);
             padding: 10px;
             position: absolute;
@@ -60,7 +54,7 @@
         }
       
         &__nav.open {
-            display: flex;
+            @include flex-container(row, space-around, flex-start);
         }
 
         &__burger-menu {

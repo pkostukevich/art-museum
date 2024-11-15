@@ -1,10 +1,8 @@
-@use '@styles/colors';
-@use '@styles/common';
+@import '@styles/common';
 
 .painting{
     height: 570px;
-    display: flex;
-    flex-direction: row;
+    @include flex-row;
     gap: 72px;
     margin: 120px auto;
     position: relative;
@@ -28,27 +26,23 @@
 
     &__info{
         text-align: left;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+        @include flex-container(column, space-between, flex-start);
 
         &__artist{
-            font-size: 24px;
-            font-weight: 400;
-            color: colors.$ocher;
+            @include font-style($font-size-l, $font-weight-regular, normal);
+            color: $ocher;
             margin-bottom: 16px;
         }
 
         &__date{
-            font-size: 16px;
-            font-weight: 700;
-            color: colors.$grey;
+            @include font-style($font-size-xs, $font-weight-bold, normal);
+            color: $grey;
         }
     }
 
-    @media screen and (max-width: common.$mediumScreenLimit) {
+    @media screen and (max-width: $mediumScreenLimit) {
         height: unset;
-        flex-direction: column;
+        @include flex-column;
         gap: 48px;
 
         &__image{

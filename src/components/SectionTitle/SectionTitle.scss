@@ -1,38 +1,34 @@
-@use '@styles/colors';
-@use '@styles/common';
+@import '@styles/common';
 
 .section-title{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     max-width: 600px;
-    font-weight: 400;
+    $font-weight-regular: 400;
 
     &.section-title--center{
-        align-items: center;
+        @include flex-container(column, center, center);
         margin: 40px auto;
     }
 
     &.section-title--left{
-        align-items: flex-start;
+        @include flex-container(column, center, flex-start);
         margin: 0 0 24px 0;
     }
 
     &__note{
-        color: colors.$ocher;
-        font-size: 16px;
+        color: $ocher;
+        font-size: $font-size-xs;
     }
 
     &__main{
-        color: colors.$grey;
-        font-size: 32px;
+        color: $grey;
+        font-size: $font-size-xl;
     }
 
-    @media screen and (max-width: common.$smallScreenLimit) {
+    @media screen and (max-width: $smallScreenLimit) {
         width: 300px;
 
         &__main{
-            font-size: 24px;
+            font-size: $font-size-l;
         }
     }
 }

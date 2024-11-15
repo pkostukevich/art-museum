@@ -1,13 +1,12 @@
-@use '@styles/colors';
-@use '@styles/common';
+@import '@styles/common';
 
 .layout{
-    background-color: colors.$lightGrey;
+    background-color: $lightGrey;
 
     .wrapper{
         min-height: calc(100vh - 370px);
 
-        @media screen and (max-width: common.$smallScreenLimit) {
+        @media screen and (max-width: $smallScreenLimit) {
             min-height: calc(100vh - 250px);
         }
     }

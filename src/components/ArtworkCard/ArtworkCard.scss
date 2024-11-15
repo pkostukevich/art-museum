@@ -1,11 +1,7 @@
-@use '@styles/colors';
-@use '@styles/common';
+@import '@styles/common';
 
 .artwork-card{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+    @include flex-container;
     line-height: 26.3px;
     padding: 16px;
     gap: 16px;
@@ -14,51 +10,44 @@
     &__image{
         width: 80px;
         height: 80px;
-        font-size: 12px;
-        line-height: 14px;
         object-fit: cover;
+        @include font-style($font-size-xxxs, $font-weight-regular, 14px)
     }
 
     &__info{
+        @include flex-container;
         z-index: 2;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        background-color: colors.$white;
+        background-color: $white;
 
         &__title{
-            color: colors.$grey;
-            font-size: 17.5px;
-            font-weight: 500;
+            color: $grey;
+            @include font-style($font-size-s, 500);
             white-space: nowrap; 
             overflow: hidden; 
             text-overflow: ellipsis; 
             max-width: 200px;
 
-            @media screen and (max-width: common.$smallScreenLimit) {
+            @media screen and (max-width: $smallScreenLimit) {
                 width: 100px;
             }
         }
 
         &__author{
-            color: colors.$ocher;
-            font-size: 15.35px;
-            font-weight: 400;
+            color: $ocher;
+            @include font-style($font-size-xxs, 400);
             white-space: nowrap; 
             overflow: hidden; 
             text-overflow: ellipsis; 
             max-width: 200px;
 
-            @media screen and (max-width: common.$smallScreenLimit) {
+            @media screen and (max-width: $smallScreenLimit) {
                 width: 100px;
             }
         }
 
         &__description{
-            color: colors.$grey;
-            font-size: 15.35px;
-            font-weight: 700;
+            color: $grey;
+            @include font-style($font-size-xxs, 700);
             margin-top: 16px;
         }
     }
@@ -91,7 +80,7 @@
                 position: absolute;
                 bottom: 0;
                 left: 0;
-                border: solid 1px colors.$borderGrey;
+                border: solid 1px $borderGrey;
                 width: 285px;
                 gap: 24px;
             }
@@ -104,26 +93,25 @@
         max-width: 100%;
 
         .artwork-card{
-            background-color: colors.$white;
-            border: solid 1px colors.$borderGrey;
+            background-color: $white;
+            border: solid 1px $borderGrey;
 
             &__info{
                 gap: 16px;
                 width: 288px;
 
-                @media screen and (max-width: common.$smallScreenLimit) {
+                @media screen and (max-width: $smallScreenLimit) {
                     width: calc(100% - 80px);
                 }
             }
         }
     }
 
-    @media screen and (max-width: common.$smallScreenLimit) {
+    @media screen and (max-width: $smallScreenLimit) {
         width: 100% !important;
     }
 }
 
 .column{
-    display: flex;
-    flex-direction: column;
+    @include flex-column;
 }

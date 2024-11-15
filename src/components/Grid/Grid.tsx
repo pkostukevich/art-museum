@@ -20,7 +20,7 @@ const Grid: React.FC<GridProps> = ({ items, noItemsMessage }) => {
   const [favorites, toggleFavoriteInStorage] = useFavorites();
 
   const handleCardClick = (id: number): void => {
-    navigate(ROUTES.PAINTING_INFO + id);
+    navigate(`${ROUTES.PAINTING_INFO}/${id}`);
   };
 
   return items.length === 0 ? (

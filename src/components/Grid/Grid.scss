@@ -1,4 +1,4 @@
-@use '@styles/common';
+@import '@styles/common';
 
 .grid{
     display: grid;
@@ -12,15 +12,15 @@
         width: 100%;
     }
 
-    @media screen and (max-width: common.$largeScreenLimit) {
+    @media screen and (max-width: $largeScreenLimit) {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    @media screen and (max-width: common.$mediumScreenLimit) {
+    @media screen and (max-width: $mediumScreenLimit) {
         grid-template-columns: repeat(1, 1fr);
     }
 
-    @media screen and (max-width: common.$smallScreenLimit) {
+    @media screen and (max-width: $smallScreenLimit) {
         width: 100%;
     }
 }

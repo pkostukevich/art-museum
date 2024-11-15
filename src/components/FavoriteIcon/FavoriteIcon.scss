@@ -1,15 +1,15 @@
-@use '@styles/colors';
+@import '@styles/common';
 
 .favorite-icon{
     border-radius: 50%;
-    background-color: colors.$lightGrey;
+    background-color: $lightGrey;
     height: 59px;
     width: 59px;
     padding: 17px;
     box-sizing: border-box;
-    font-size: 12px;
+    @include font-style($font-size-xxxs, $font-weight-regular);
 
     &.favorite-icon--active{
-        background-color: colors.$transparentOrange;
+        background-color: $transparentOrange;
     }
 }

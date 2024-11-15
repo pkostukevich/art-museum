@@ -28,7 +28,7 @@ const Gallery: React.FC<GalleryProps> = ({ data, itemsPerPage }) => {
   const paintings: Painting[] = getCurrentData();
 
   const handleCardClick = (id: number): void => {
-    navigate(ROUTES.PAINTING_INFO + id);
+    navigate(`${ROUTES.PAINTING_INFO}/${id}`);
   };
 
   return (

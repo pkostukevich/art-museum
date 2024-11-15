@@ -1,17 +1,15 @@
-@use '@styles/colors';
+@import '@styles/common';
 
 .description-item {
     margin-top: 16px;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 20px;
+    @include font-style($font-size-xs, $font-weight-regular, 20px);
 
     &__category{
-        color: colors.$ocher;
+        color: $ocher;
         margin-right: 4px;
     }
 
     &__value{
-        color: colors.$grey;
+        color: $grey;
     }
 }

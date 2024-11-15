@@ -1,0 +1,27 @@
+@font-face {
+    font-family: 'LexendDeca';
+    src: url('../assets/fonts/LexendDeca/LexendDeca-VariableFont_wght.ttf') format('truetype');
+    font-weight: 300 400 500 600 700; 
+    font-style: normal;
+}
+
+$font-weight-light: 300;
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+$font-size-xxxs: 12px;
+$font-size-xxs: 15.35px;
+$font-size-xs: 16px;
+$font-size-s: 17.5px;
+$font-size-m: 18px;
+$font-size-l: 24px;
+$font-size-xl: 32px;
+$font-size-xxl: 64px;
+
+@mixin font-style($size, $weight: $font-weight-regular, $height: normal) {
+    font-size: $size;
+    line-height: $height;
+    font-weight: $weight;
+}

@@ -1,13 +1,11 @@
-@use '@styles/colors';
+@import '@styles/common';
 
 .back-button{
     position: absolute;
     top: -40px;
     left: 0;
-    display: flex;
-    flex-direction: row;
     gap: 4px;
-    align-items: center;
     cursor: pointer;
-    color: colors.$grey;
+    color: $grey;
+    @include flex-container;
 }
