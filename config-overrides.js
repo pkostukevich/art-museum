@@ -11,6 +11,7 @@ module.exports = function override(config) {
       '@fonts': path.resolve(__dirname, 'src/assets/fonts/'),
       '@models': path.resolve(__dirname, 'src/models/'),
       '@pages': path.resolve(__dirname, 'src/pages/'),
+      '@router': path.resolve(__dirname, 'src/router/'),
       '@store': path.resolve(__dirname, 'src/store/'),
       '@styles': path.resolve(__dirname, 'src/styles/'),
       '@svg': path.resolve(__dirname, 'src/assets/svg/'),

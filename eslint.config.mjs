@@ -1,7 +1,8 @@
-import globals from "globals";
 import pluginJs from "@eslint/js";
-import tseslint from "typescript-eslint";
 import pluginReact from "eslint-plugin-react";
+import simpleImportSort from "eslint-plugin-simple-import-sort";
+import globals from "globals";
+import tseslint from "typescript-eslint";
 
 export default [
   {files: ["**/*.{ts,tsx}"]},
@@ -10,6 +11,11 @@ export default [
   ...tseslint.configs.recommended,
   pluginReact.configs.flat.recommended,
   {
+    plugins: {
+      "simple-import-sort": simpleImportSort,
+    }
+  },
+  {
     settings: {
       react: {
         version: "detect",
@@ -17,10 +23,20 @@ export default [
     },
   },
   {
-    ignores: ["config-overrides.js", "webpack.config.js", "jest.config.ts"],
+    ignores: ["config-overrides.js", "webpack.config.js", "jest.config.ts", "src/styles/*.ts", "**/**/styled.ts"],
   },
   {
     rules: {
+      "simple-import-sort/imports": ["error", {
+      groups: [
+        ["^react"],
+        ["^antd"],
+        ["^@?\\w"],
+        ["@/(.*)"],
+        ["^[./]"]
+      ]
+    }],
+      "simple-import-sort/exports": "error",
       "@typescript-eslint/explicit-function-return-type": "error", 
       "@typescript-eslint/no-unused-vars": [
         "error",
@@ -40,5 +56,5 @@ export default [
       "@typescript-eslint/no-var-requires": "off",
       "react/prop-types": "off"
     },
-  }
+  },
 ];

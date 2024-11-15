@@ -9,6 +9,7 @@
       "@fonts/*": ["./assets/fonts/*"],
       "@models/*": ["./models/*"],
       "@pages/*": ["./pages/*"],
+      "@router/*": ["./router/*"],
       "@store/*": ["./store/*"],
       "@styles/*": ["./styles/*"],
       "@svg/*": ["./assets/svg/*"],
