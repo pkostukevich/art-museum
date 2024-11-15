@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-import FavoriteIcon from '@components/FavoriteIcon/FavoriteIcon';
+import FavoriteIcon from '@components/FavoriteIcon';
 import { STATIC_TEXTS } from '@constants/staticTexts';
 import { CardSize } from '@models/enums/cardSize.enum';
 import DefaultArtwork from '@svg/default-artwork.svg';

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 
 import { fetchPaintingById } from '@api/fetchPaintings';
-import Grid from '@components/Grid/Grid';
-import Loader from '@components/Loader/Loader';
-import PageTitle from '@components/PageTitle/PageTitle';
-import SectionTitle from '@components/SectionTitle/SectionTitle';
+import Grid from '@components/Grid';
+import Loader from '@components/Loader';
+import PageTitle from '@components/PageTitle';
+import SectionTitle from '@components/SectionTitle';
 import { useFavorites } from '@hooks/useSessionStorage';
 import { Painting } from '@models/interfaces/painting.interface';
 

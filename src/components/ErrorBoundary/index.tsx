@@ -1,7 +1,7 @@
 import React, { ErrorInfo } from 'react';
 
-import PageTitle from '@components/PageTitle/PageTitle';
-import SectionTitle from '@components/SectionTitle/SectionTitle';
+import PageTitle from '@components/PageTitle';
+import SectionTitle from '@components/SectionTitle';
 
 type ErrorBoundaryProps = {
   children: React.ReactNode;

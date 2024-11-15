@@ -1,14 +1,14 @@
 import React from 'react';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
 
-import ArtworkCard from '@components/ArtworkCard/ArtworkCard';
-import SectionTitle from '@components/SectionTitle/SectionTitle';
+import ArtworkCard from '@components/ArtworkCard';
+import PaginationBar from '@components/Gallery/PaginationBar';
+import SectionTitle from '@components/SectionTitle';
 import { ROUTES } from '@constants/routes';
 import { usePagination } from '@hooks/usePagination';
 import { useFavorites } from '@hooks/useSessionStorage';
 import { CardSize } from '@models/enums/cardSize.enum';
 import { Painting } from '@models/interfaces/painting.interface';
-import PaginationBar from '@pages/Home/Gallery/PaginationBar/PaginationBar';
 import { generatePageNumbers } from '@utils/generatePageNumbers';
 import { retrieveArtistName } from '@utils/retrieveArtistInfo';
 

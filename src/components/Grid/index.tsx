@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
 
-import ArtworkCard from '@components/ArtworkCard/ArtworkCard';
+import ArtworkCard from '@components/ArtworkCard';
 import { ROUTES } from '@constants/routes';
 import { useFavorites } from '@hooks/useSessionStorage';
 import { CardSize } from '@models/enums/cardSize.enum';

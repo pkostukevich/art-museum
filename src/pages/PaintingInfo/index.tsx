@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { fetchPaintingById } from '@api/fetchPaintings';
-import BackButton from '@components/BackButton/BackButton';
-import DescriptionItem from '@components/DescriptionItem/DescriptionItem';
-import FavoriteIcon from '@components/FavoriteIcon/FavoriteIcon';
-import Loader from '@components/Loader/Loader';
-import SectionTitle from '@components/SectionTitle/SectionTitle';
+import BackButton from '@components/BackButton';
+import DescriptionItem from '@components/DescriptionItem';
+import FavoriteIcon from '@components/FavoriteIcon';
+import Loader from '@components/Loader';
+import SectionTitle from '@components/SectionTitle';
 import { STATIC_TEXTS } from '@constants/staticTexts';
 import { useFavorites } from '@hooks/useSessionStorage';
 import { Painting } from '@models/interfaces/painting.interface';

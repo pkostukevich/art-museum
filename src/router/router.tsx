@@ -2,9 +2,9 @@ import React from 'react';
 import { Navigate } from 'react-router-dom';
 
 import { ROUTES } from '@constants/routes';
-import Favorites from '@pages/Favorites/Favorites';
-import Home from '@pages/Home/Home';
-import Painting from '@pages/PaintingInfo/PaintingInfo';
+import Favorites from '@pages/Favorites';
+import Home from '@pages/Home';
+import Painting from '@pages/PaintingInfo';
 
 interface Route {
   path: string;

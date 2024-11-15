@@ -1,14 +1,15 @@
 import React, { useCallback, useEffect, useState } from 'react';
 
 import { fetchPaintings } from '@api/fetchPaintings';
-import Grid from '@components/Grid/Grid';
-import Loader from '@components/Loader/Loader';
-import PageTitle from '@components/PageTitle/PageTitle';
-import SearchForm from '@components/SearchForm/SearchForm';
-import SectionTitle from '@components/SectionTitle/SectionTitle';
+import Gallery from '@components/Gallery';
+import Grid from '@components/Grid';
+import Loader from '@components/Loader';
+import PageTitle from '@components/PageTitle';
+import SearchForm from '@components/SearchForm';
+import SectionTitle from '@components/SectionTitle';
+import { ITEMS_LIMIT } from '@constants/itemsPerPage';
 import useItemsPerPage from '@hooks/useItemsPerPage';
 import { Painting } from '@models/interfaces/painting.interface';
-import Gallery from '@pages/Home/Gallery/Gallery';
 
 import './Home.scss';
 
@@ -25,9 +26,10 @@ const Home: React.FC = () => {
     setLoading(true);
     fetchPaintings()
       .then((data: Painting[]) => {
-        setPaintings(data.slice(0, 30));
-        setFilteredPaintings(data.slice(0, 30));
-        setRecommendedPaintings(data.slice(30));
+        const paintings: Painting[] = data.slice(0, ITEMS_LIMIT);
+        setPaintings(paintings);
+        setFilteredPaintings(paintings);
+        setRecommendedPaintings(data.slice(ITEMS_LIMIT));
       })
       .finally(() => setLoading(false));
   }, []);

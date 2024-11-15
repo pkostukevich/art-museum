@@ -9,3 +9,5 @@ export const ITEMS_PER_PAGE: { [key: string]: number } = {
   MEDIUM: 2,
   SMALL: 1,
 };
+
+export const ITEMS_LIMIT: number = 30;
