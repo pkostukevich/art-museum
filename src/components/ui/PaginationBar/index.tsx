@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 
-import PaginationButton from '@components/Gallery/PaginationBar/PaginationButton';
+import PaginationButton from '@components/ui/PaginationBar/PaginationButton';
 import ArrowLeft from '@svg/arrow-left.svg';
 import ArrowRight from '@svg/arrow-right.svg';
 

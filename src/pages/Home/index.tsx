@@ -4,11 +4,12 @@ import { fetchPaintings } from '@api/fetchPaintings';
 import ErrorMessage from '@components/ErrorBoundary/ErrorMessage';
 import Gallery from '@components/Gallery';
 import Grid from '@components/Grid';
-import Loader from '@components/Loader';
-import PageTitle from '@components/PageTitle';
-import SearchForm from '@components/SearchForm';
-import SectionTitle from '@components/SectionTitle';
+import Loader from '@components/ui/Loader';
+import PageTitle from '@components/ui/PageTitle';
+import SearchForm from '@components/ui/SearchForm';
+import SectionTitle from '@components/ui/SectionTitle';
 import { ITEMS_LIMIT } from '@constants/itemsPerPage';
+import { STATIC_TEXTS } from '@constants/staticTexts';
 import useItemsPerPage from '@hooks/useItemsPerPage';
 import { Painting } from '@models/interfaces/painting.interface';
 import { Section } from '@styles/common';
@@ -63,7 +64,10 @@ const Home: React.FC = () => {
     <>
       <Section>
         <PageTitle text="Let's find some art here!" highlightedText="art" />
-        <SearchForm onSearch={handleSearch} />
+        <SearchForm
+          onSearch={handleSearch}
+          placeholder={STATIC_TEXTS.searchForm.placeholder}
+        />
       </Section>
       {loading ? (
         <Loader />

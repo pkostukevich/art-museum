@@ -6,7 +6,7 @@ import MuseumLogo from '@svg/museum-logo-light.svg';
 import Favorites from '@svg/navigation/favorites.svg';
 import Home from '@svg/navigation/home.svg';
 
-import NavItem from './NavItem';
+import NavItem from '../ui/NavItem';
 import {
   BurgerLine,
   BurgerMenu,

@@ -1,7 +1,7 @@
 import React from 'react';
 
-import DescriptionItem from '@components/DescriptionItem';
-import SectionTitle from '@components/SectionTitle';
+import DescriptionItem from '@components/ui/DescriptionItem';
+import SectionTitle from '@components/ui/SectionTitle';
 import { STATIC_TEXTS } from '@constants/staticTexts';
 import {
   retrieveArtistName,

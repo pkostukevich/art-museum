@@ -2,8 +2,8 @@ import React, { useCallback } from 'react';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
 
 import ArtworkCard from '@components/ArtworkCard';
-import PaginationBar from '@components/Gallery/PaginationBar';
-import SectionTitle from '@components/SectionTitle';
+import PaginationBar from '@components/ui/PaginationBar';
+import SectionTitle from '@components/ui/SectionTitle';
 import { ROUTES } from '@constants/routes';
 import { usePagination } from '@hooks/usePagination';
 import { useFavorites } from '@hooks/useSessionStorage';

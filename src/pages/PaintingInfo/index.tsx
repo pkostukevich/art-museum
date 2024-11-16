@@ -3,10 +3,10 @@ import { useParams } from 'react-router-dom';
 
 import { fetchPaintingById } from '@api/fetchPaintings';
 import ArtworkOverview from '@components/ArtworkOverview';
-import BackButton from '@components/BackButton';
 import ErrorMessage from '@components/ErrorBoundary/ErrorMessage';
 import FavoriteIcon from '@components/FavoriteIcon';
-import Loader from '@components/Loader';
+import BackButton from '@components/ui/BackButton';
+import Loader from '@components/ui/Loader';
 import { STATIC_TEXTS } from '@constants/staticTexts';
 import { useFavorites } from '@hooks/useSessionStorage';
 import { Painting } from '@models/interfaces/painting.interface';
