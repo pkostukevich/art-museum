@@ -17,4 +17,4 @@ const SectionTitle: React.FC<SectionTitleProps> = ({ title, note, align }) => {
   );
 };
 
-export default SectionTitle;
+export default React.memo(SectionTitle);

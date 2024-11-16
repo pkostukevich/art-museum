@@ -1,15 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { fetchPaintingById } from '@api/fetchPaintings';
 import ArtworkOverview from '@components/ArtworkOverview';
-import BackButton from '@components/BackButton';
 import ErrorMessage from '@components/ErrorBoundary/ErrorMessage';
 import FavoriteIcon from '@components/FavoriteIcon';
-import Loader from '@components/Loader';
+import BackButton from '@components/ui/BackButton';
+import Loader from '@components/ui/Loader';
 import { STATIC_TEXTS } from '@constants/staticTexts';
 import { useFavorites } from '@hooks/useSessionStorage';
 import { Painting } from '@models/interfaces/painting.interface';
+import { Section } from '@styles/common';
 import DefaultArtwork from '@svg/default-artwork.svg';
 import { getImageUrl } from '@utils/getImageUrl';
 
@@ -51,42 +52,50 @@ const PaintingInfo: React.FC = () => {
     }
   }, [id]);
 
+  const toggleFavorite: () => void = useCallback(() => {
+    if (id) {
+      toggleFavoriteInStorage(Number(id));
+    }
+  }, [id, toggleFavoriteInStorage]);
+
   if (error) {
     return <ErrorMessage message={error} />;
   }
 
   return (
-    <PaintingContainer>
-      <BackButton />
-      {loading ? (
-        <Loader />
-      ) : (
-        <>
-          <ImageWrapper>
-            <PaintingImage
-              src={imageSrc}
-              alt={painting?.title || STATIC_TEXTS.paintingInfo.notFound}
-            />
-            <FavoriteWrapper>
-              <FavoriteIcon
-                active={favorites.includes(Number(id))}
-                toggleActive={() => toggleFavoriteInStorage(Number(id))}
+    <Section>
+      <PaintingContainer>
+        <BackButton />
+        {loading ? (
+          <Loader />
+        ) : (
+          <>
+            <ImageWrapper>
+              <PaintingImage
+                src={imageSrc}
+                alt={painting?.title || STATIC_TEXTS.paintingInfo.notFound}
               />
-            </FavoriteWrapper>
-          </ImageWrapper>
-          {painting && (
-            <ArtworkOverview
-              title={painting.title}
-              artist_display={painting.artist_display}
-              date_display={painting.date_display}
-              dimensions={painting.dimensions}
-              credit_line={painting.credit_line}
-              is_public_domain={painting.is_public_domain}
-            />
-          )}
-        </>
-      )}
-    </PaintingContainer>
+              <FavoriteWrapper>
+                <FavoriteIcon
+                  active={favorites.includes(Number(id))}
+                  toggleActive={toggleFavorite}
+                />
+              </FavoriteWrapper>
+            </ImageWrapper>
+            {painting && (
+              <ArtworkOverview
+                title={painting.title}
+                artist_display={painting.artist_display}
+                date_display={painting.date_display}
+                dimensions={painting.dimensions}
+                credit_line={painting.credit_line}
+                is_public_domain={painting.is_public_domain}
+              />
+            )}
+          </>
+        )}
+      </PaintingContainer>
+    </Section>
   );
 };
 

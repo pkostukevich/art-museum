@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import theme from './theme';
 
-export const Section = styled.div`
+export const Section = styled.section`
   margin: 112px 0;
 
   @media screen and (max-width: ${theme.breakpoints.small}) {

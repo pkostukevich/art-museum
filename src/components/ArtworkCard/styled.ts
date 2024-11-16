@@ -10,8 +10,8 @@ const Wrapper = styled.div<{ size: CardSize }>`
   ${({ size }) =>
     size === CardSize.SMALL &&
     `
-      background-color: #fff;
-      border: 1px solid #f0f1f1;
+      background-color: ${theme.colors.white};
+      border: 1px solid ${theme.colors.borderGrey};
     `}
 
   @media screen and (max-width: ${theme.breakpoints.small}) {
@@ -64,6 +64,12 @@ const Card = styled.div<{ size: CardSize }>`
     left: 0;
     width: 285px;
     gap: 24px;
+
+    @media screen and (max-width: ${theme.breakpoints.medium}) {
+      width: ${({ size }) =>
+        size === CardSize.LARGE ? '90%' : '100% !important'};
+      box-sizing: border-box;
+    }
   }
 `;
 

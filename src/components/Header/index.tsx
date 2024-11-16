@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 
 import { ROUTES } from '@constants/routes';
 import { NavItemInterface } from '@models/interfaces/navItem.interface';
@@ -6,12 +6,13 @@ import MuseumLogo from '@svg/museum-logo-light.svg';
 import Favorites from '@svg/navigation/favorites.svg';
 import Home from '@svg/navigation/home.svg';
 
-import NavItem from './NavItem';
+import NavItem from '../ui/NavItem';
 import {
   BurgerLine,
   BurgerMenu,
   HeaderContainer,
   HeaderWrapper,
+  Logo,
   Nav,
 } from './styled';
 
@@ -31,18 +32,14 @@ const navItems: NavItemInterface[] = [
 const Header: React.FC = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
 
-  const toggleMenu: () => void = () => {
-    setMenuOpen(!isMenuOpen);
-  };
+  const toggleMenu: () => void = useCallback(() => {
+    setMenuOpen((prev) => !prev);
+  }, []);
 
   return (
     <HeaderContainer>
       <HeaderWrapper>
-        <img
-          src={MuseumLogo}
-          alt="Museum of Art logo"
-          style={{ width: '150px' }}
-        />
+        <Logo src={MuseumLogo} alt="Museum of Art logo" />
         <div>
           <Nav isOpen={isMenuOpen}>
             {navItems.map(({ path, icon, label }, index) => (
@@ -55,7 +52,7 @@ const Header: React.FC = () => {
               />
             ))}
           </Nav>
-          <BurgerMenu onClick={toggleMenu}>
+          <BurgerMenu onClick={toggleMenu} aria-expanded={isMenuOpen}>
             <BurgerLine isOpen={isMenuOpen} />
             <BurgerLine isOpen={isMenuOpen} />
             <BurgerLine isOpen={isMenuOpen} />

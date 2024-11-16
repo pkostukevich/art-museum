@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
 
 import ArtworkCard from '@components/ArtworkCard';
@@ -23,6 +23,13 @@ const Grid: React.FC<GridProps> = ({ items, noItemsMessage }) => {
     navigate(`${ROUTES.PAINTING_INFO}/${id}`);
   };
 
+  const toggleFavorite: (id: number) => void = useCallback(
+    (id: number) => {
+      toggleFavoriteInStorage(id);
+    },
+    [toggleFavoriteInStorage],
+  );
+
   return items.length === 0 ? (
     <EmptyResult>{noItemsMessage}</EmptyResult>
   ) : (
@@ -36,7 +43,7 @@ const Grid: React.FC<GridProps> = ({ items, noItemsMessage }) => {
           imageId={item.image_id}
           size={CardSize.SMALL}
           favorite={favorites.includes(item.id)}
-          toggleFavorite={() => toggleFavoriteInStorage(item.id)()}
+          toggleFavorite={() => toggleFavorite(item.id)}
           handleClick={() => handleCardClick(item.id)}
         />
       ))}
@@ -44,4 +51,4 @@ const Grid: React.FC<GridProps> = ({ items, noItemsMessage }) => {
   );
 };
 
-export default Grid;
+export default React.memo(Grid);

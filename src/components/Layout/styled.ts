@@ -1,11 +1,7 @@
 import theme from '@styles/theme';
 import styled from 'styled-components';
 
-const LayoutContainer = styled.div`
-  background-color: ${theme.colors.lightGrey};
-`;
-
-const ContentWrapper = styled.div`
+const ContentWrapper = styled.main`
   min-height: calc(100vh - 370px);
 
   max-width: calc(${theme.breakpoints.large} - ${theme.globalPadding} * 2);
@@ -24,4 +20,4 @@ const ContentWrapper = styled.div`
   }
 `;
 
-export { ContentWrapper, LayoutContainer };
+export { ContentWrapper };

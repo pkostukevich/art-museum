@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
 
 import ArtworkCard from '@components/ArtworkCard';
-import PaginationBar from '@components/Gallery/PaginationBar';
-import SectionTitle from '@components/SectionTitle';
+import PaginationBar from '@components/ui/PaginationBar';
+import SectionTitle from '@components/ui/SectionTitle';
 import { ROUTES } from '@constants/routes';
 import { usePagination } from '@hooks/usePagination';
 import { useFavorites } from '@hooks/useSessionStorage';
@@ -31,6 +31,13 @@ const Gallery: React.FC<GalleryProps> = ({ data, itemsPerPage }) => {
     navigate(`${ROUTES.PAINTING_INFO}/${id}`);
   };
 
+  const toggleFavorite: (id: number) => void = useCallback(
+    (id: number) => {
+      toggleFavoriteInStorage(id);
+    },
+    [toggleFavoriteInStorage],
+  );
+
   return (
     <>
       <SectionTitle
@@ -51,7 +58,7 @@ const Gallery: React.FC<GalleryProps> = ({ data, itemsPerPage }) => {
               imageId={item.image_id}
               size={CardSize.LARGE}
               favorite={favorites.includes(item.id)}
-              toggleFavorite={() => toggleFavoriteInStorage(item.id)()}
+              toggleFavorite={() => toggleFavorite(item.id)}
               handleClick={() => handleCardClick(item.id)}
             />
           ))

@@ -1,7 +1,7 @@
 import React from 'react';
 
-import PageTitle from '@components/PageTitle';
-import SectionTitle from '@components/SectionTitle';
+import PageTitle from '@components/ui/PageTitle';
+import SectionTitle from '@components/ui/SectionTitle';
 import { STATIC_TEXTS } from '@constants/staticTexts';
 
 type ErrorMessageProps = {

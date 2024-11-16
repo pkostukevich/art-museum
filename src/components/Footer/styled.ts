@@ -1,7 +1,7 @@
 import theme from '@styles/theme';
 import styled from 'styled-components';
 
-const FooterContainer = styled.div`
+const FooterContainer = styled.footer`
   height: 127px;
   width: 100%;
   background-color: ${theme.colors.white};

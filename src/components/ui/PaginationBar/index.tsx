@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 
-import PaginationButton from '@components/Gallery/PaginationBar/PaginationButton';
+import PaginationButton from '@components/ui/PaginationBar/PaginationButton';
 import ArrowLeft from '@svg/arrow-left.svg';
 import ArrowRight from '@svg/arrow-right.svg';
 
@@ -25,6 +25,13 @@ const PaginationBar: React.FC<PaginationBarProps> = ({
   setPage,
   pages,
 }) => {
+  const handlePaginationClick: (page: number) => void = useCallback(
+    (page: number): void => {
+      setPage(page);
+    },
+    [setPage],
+  );
+
   return (
     <PaginationBarWrapper>
       <PaginationButton
@@ -36,7 +43,7 @@ const PaginationBar: React.FC<PaginationBarProps> = ({
         <PaginationButton
           key={page}
           content={page}
-          handleClick={() => setPage(page)}
+          handleClick={() => handlePaginationClick(page)}
           active={currentPage === page}
         />
       ))}
@@ -49,4 +56,4 @@ const PaginationBar: React.FC<PaginationBarProps> = ({
   );
 };
 
-export default PaginationBar;
+export default React.memo(PaginationBar);

@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 export const StyledNavLink = styled(NavLink)<{ hidden: boolean }>`
   text-decoration: none !important;
-  color: white !important;
+  color: ${theme.colors.white} !important;
   display: flex;
   flex-direction: row;
   gap: 6px;

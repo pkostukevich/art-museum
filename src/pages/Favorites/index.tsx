@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 
 import { fetchPaintingById } from '@api/fetchPaintings';
 import Grid from '@components/Grid';
-import Loader from '@components/Loader';
-import PageTitle from '@components/PageTitle';
-import SectionTitle from '@components/SectionTitle';
+import Loader from '@components/ui/Loader';
+import PageTitle from '@components/ui/PageTitle';
+import SectionTitle from '@components/ui/SectionTitle';
 import { useFavorites } from '@hooks/useSessionStorage';
 import { Painting } from '@models/interfaces/painting.interface';
 import { Section } from '@styles/common';
@@ -34,8 +34,6 @@ const Favorites: React.FC = () => {
     <>
       <Section>
         <PageTitle text="Here are your favorites" highlightedText="favorites" />
-      </Section>
-      <Section>
         <SectionTitle
           title="Your favorites list"
           note="Saved by you"

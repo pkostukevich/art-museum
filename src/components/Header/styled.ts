@@ -1,7 +1,7 @@
 import theme from '@styles/theme';
 import styled from 'styled-components';
 
-const HeaderContainer = styled.div`
+const HeaderContainer = styled.header`
   height: 127px;
   width: 100%;
   background: linear-gradient(90deg, #343333 17%, #484848 59%, #282828 99%);
@@ -71,4 +71,8 @@ const BurgerLine = styled.div<{ isOpen: boolean }>`
   margin: 4px 0;
 `;
 
-export { BurgerLine, BurgerMenu, HeaderContainer, HeaderWrapper, Nav };
+const Logo = styled.img`
+  width: 150px;
+`;
+
+export { BurgerLine, BurgerMenu, HeaderContainer, HeaderWrapper, Nav, Logo };

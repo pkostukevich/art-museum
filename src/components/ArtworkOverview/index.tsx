@@ -1,7 +1,7 @@
 import React from 'react';
 
-import DescriptionItem from '@components/DescriptionItem';
-import SectionTitle from '@components/SectionTitle';
+import DescriptionItem from '@components/ui/DescriptionItem';
+import SectionTitle from '@components/ui/SectionTitle';
 import { STATIC_TEXTS } from '@constants/staticTexts';
 import {
   retrieveArtistName,
@@ -27,31 +27,31 @@ const ArtworkOverview: React.FC<ArtworkOverviewProps> = ({
   credit_line,
   is_public_domain,
 }) => {
+  const artistName: string = retrieveArtistName(artist_display);
+  const artistNationality: string = retrieveArtistNationality(artist_display);
+  const publicDomainText: string = is_public_domain
+    ? STATIC_TEXTS.artworkCard.publicDomain
+    : STATIC_TEXTS.artworkCard.notPublicDomain;
+
   return (
     <OverviewContainer>
       <div>
         <SectionTitle title={title} align="left" />
-        <ArtistInfo>{retrieveArtistName(artist_display)}</ArtistInfo>
+        <ArtistInfo>{artistName}</ArtistInfo>
         <DateInfo>{date_display}</DateInfo>
       </div>
       <div>
         <SectionTitle title="Overview" align="left" />
         <DescriptionItem
           category="Artist nationality:"
-          value={retrieveArtistNationality(artist_display)}
+          value={artistNationality}
         />
         <DescriptionItem category="Dimensions: Sheet:" value={dimensions} />
         <DescriptionItem category="Credit Line:" value={credit_line} />
-        <DescriptionItem
-          value={
-            is_public_domain
-              ? STATIC_TEXTS.artworkCard.publicDomain
-              : STATIC_TEXTS.artworkCard.notPublicDomain
-          }
-        />
+        <DescriptionItem value={publicDomainText} />
       </div>
     </OverviewContainer>
   );
 };
 
-export default ArtworkOverview;
+export default React.memo(ArtworkOverview);
