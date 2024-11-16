@@ -1,7 +1,8 @@
 import React, { ErrorInfo } from 'react';
 
-import PageTitle from '@components/PageTitle';
-import SectionTitle from '@components/SectionTitle';
+import { STATIC_TEXTS } from '@constants/staticTexts';
+
+import ErrorMessage from './ErrorMessage';
 
 type ErrorBoundaryProps = {
   children: React.ReactNode;
@@ -30,15 +31,7 @@ class ErrorBoundary extends React.Component<
 
   render(): React.ReactNode {
     if (this.state.hasError) {
-      return (
-        <>
-          <PageTitle
-            text="Sorry, something went wrong."
-            highlightedText="Sorry,"
-          ></PageTitle>
-          <SectionTitle note="Try to reload the page" align="center" title="" />
-        </>
-      );
+      return <ErrorMessage message={STATIC_TEXTS.error.defaultMessage} />;
     }
     return this.props.children;
   }

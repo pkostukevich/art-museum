@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { fetchPaintingById } from '@api/fetchPaintings';
 import ArtworkOverview from '@components/ArtworkOverview';
 import BackButton from '@components/BackButton';
+import ErrorMessage from '@components/ErrorBoundary/ErrorMessage';
 import FavoriteIcon from '@components/FavoriteIcon';
 import Loader from '@components/Loader';
 import { STATIC_TEXTS } from '@constants/staticTexts';
@@ -25,22 +26,34 @@ const PaintingInfo: React.FC = () => {
   const [painting, setPainting] = useState<Painting>();
   const [imageSrc, setImageSrc] = useState<string>(DefaultArtwork);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     if (id) {
       setLoading(true);
+      setError(null);
       fetchPaintingById(id)
         .then((data: Painting) => {
           setPainting(data);
           const imageId: string = data.image_id;
-          getImageUrl(imageId).then((url) => {
-            const src: string = url ? url : DefaultArtwork;
-            setImageSrc(src);
-          });
+          return getImageUrl(imageId);
         })
-        .finally(() => setLoading(false));
+        .then((url) => {
+          const src: string = url || DefaultArtwork;
+          setImageSrc(src);
+        })
+        .catch((error) => {
+          setError(error.message);
+        })
+        .finally(() => {
+          setLoading(false);
+        });
     }
   }, [id]);
+
+  if (error) {
+    return <ErrorMessage message={error} />;
+  }
 
   return (
     <PaintingContainer>
