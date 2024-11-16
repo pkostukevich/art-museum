@@ -34,8 +34,6 @@ const Favorites: React.FC = () => {
     <>
       <Section>
         <PageTitle text="Here are your favorites" highlightedText="favorites" />
-      </Section>
-      <Section>
         <SectionTitle
           title="Your favorites list"
           note="Saved by you"

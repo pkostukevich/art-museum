@@ -10,6 +10,7 @@ import Loader from '@components/Loader';
 import { STATIC_TEXTS } from '@constants/staticTexts';
 import { useFavorites } from '@hooks/useSessionStorage';
 import { Painting } from '@models/interfaces/painting.interface';
+import { Section } from '@styles/common';
 import DefaultArtwork from '@svg/default-artwork.svg';
 import { getImageUrl } from '@utils/getImageUrl';
 
@@ -62,37 +63,39 @@ const PaintingInfo: React.FC = () => {
   }
 
   return (
-    <PaintingContainer>
-      <BackButton />
-      {loading ? (
-        <Loader />
-      ) : (
-        <>
-          <ImageWrapper>
-            <PaintingImage
-              src={imageSrc}
-              alt={painting?.title || STATIC_TEXTS.paintingInfo.notFound}
-            />
-            <FavoriteWrapper>
-              <FavoriteIcon
-                active={favorites.includes(Number(id))}
-                toggleActive={toggleFavorite}
+    <Section>
+      <PaintingContainer>
+        <BackButton />
+        {loading ? (
+          <Loader />
+        ) : (
+          <>
+            <ImageWrapper>
+              <PaintingImage
+                src={imageSrc}
+                alt={painting?.title || STATIC_TEXTS.paintingInfo.notFound}
               />
-            </FavoriteWrapper>
-          </ImageWrapper>
-          {painting && (
-            <ArtworkOverview
-              title={painting.title}
-              artist_display={painting.artist_display}
-              date_display={painting.date_display}
-              dimensions={painting.dimensions}
-              credit_line={painting.credit_line}
-              is_public_domain={painting.is_public_domain}
-            />
-          )}
-        </>
-      )}
-    </PaintingContainer>
+              <FavoriteWrapper>
+                <FavoriteIcon
+                  active={favorites.includes(Number(id))}
+                  toggleActive={toggleFavorite}
+                />
+              </FavoriteWrapper>
+            </ImageWrapper>
+            {painting && (
+              <ArtworkOverview
+                title={painting.title}
+                artist_display={painting.artist_display}
+                date_display={painting.date_display}
+                dimensions={painting.dimensions}
+                credit_line={painting.credit_line}
+                is_public_domain={painting.is_public_domain}
+              />
+            )}
+          </>
+        )}
+      </PaintingContainer>
+    </Section>
   );
 };
 
