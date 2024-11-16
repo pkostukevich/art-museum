@@ -27,4 +27,4 @@ const PaginationButton: React.FC<PaginationButtonProps> = ({
   );
 };
 
-export default PaginationButton;
+export default React.memo(PaginationButton);

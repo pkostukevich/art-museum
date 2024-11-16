@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { fetchPaintingById } from '@api/fetchPaintings';
@@ -51,6 +51,12 @@ const PaintingInfo: React.FC = () => {
     }
   }, [id]);
 
+  const toggleFavorite: () => void = useCallback(() => {
+    if (id) {
+      toggleFavoriteInStorage(Number(id));
+    }
+  }, [id, toggleFavoriteInStorage]);
+
   if (error) {
     return <ErrorMessage message={error} />;
   }
@@ -70,7 +76,7 @@ const PaintingInfo: React.FC = () => {
             <FavoriteWrapper>
               <FavoriteIcon
                 active={favorites.includes(Number(id))}
-                toggleActive={() => toggleFavoriteInStorage(Number(id))}
+                toggleActive={toggleFavorite}
               />
             </FavoriteWrapper>
           </ImageWrapper>

@@ -19,4 +19,4 @@ const DescriptionItem: React.FC<DescriptionItemProps> = ({
   );
 };
 
-export default DescriptionItem;
+export default React.memo(DescriptionItem);

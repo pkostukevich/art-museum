@@ -21,4 +21,4 @@ const BackButton: React.FC = () => {
   );
 };
 
-export default BackButton;
+export default React.memo(BackButton);

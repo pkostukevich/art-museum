@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 
 import { HighlightedText, Title } from './styled';
 
@@ -8,19 +8,19 @@ interface PageTitleProps {
 }
 
 const PageTitle: React.FC<PageTitleProps> = ({ text, highlightedText }) => {
+  const words: string[] = useMemo(() => text.split(' '), [text]);
+
   return (
     <Title>
-      {text
-        .split(' ')
-        .map((word, index) =>
-          word === highlightedText ? (
-            <HighlightedText key={index}>{word} </HighlightedText>
-          ) : (
-            <span key={index}>{word} </span>
-          ),
-        )}
+      {words.map((word: string, index: number) =>
+        word === highlightedText ? (
+          <HighlightedText key={index}>{word} </HighlightedText>
+        ) : (
+          <span key={index}>{word} </span>
+        ),
+      )}
     </Title>
   );
 };
 
-export default PageTitle;
+export default React.memo(PageTitle);

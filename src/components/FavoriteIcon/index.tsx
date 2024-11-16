@@ -20,4 +20,4 @@ const FavoriteIcon: React.FC<FavoriteIconProps> = ({
   );
 };
 
-export default FavoriteIcon;
+export default React.memo(FavoriteIcon);

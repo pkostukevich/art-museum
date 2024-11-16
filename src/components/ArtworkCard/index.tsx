@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 import ErrorMessage from '@components/ErrorBoundary/ErrorMessage';
 import FavoriteIcon from '@components/FavoriteIcon';
@@ -40,6 +40,7 @@ const ArtworkCard: React.FC<ArtworkCardProps> = ({
   handleClick,
 }) => {
   const [imageSrc, setImageSrc] = useState<string>(DefaultArtwork);
+  const [favoriteState, setFavoriteState] = useState(favorite);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -53,6 +54,15 @@ const ArtworkCard: React.FC<ArtworkCardProps> = ({
         setError(error.message);
       });
   }, [imageId]);
+
+  const handleToggleFavorite: (e: React.MouseEvent) => void = useCallback(
+    (e: React.MouseEvent) => {
+      e.stopPropagation();
+      toggleFavorite();
+      setFavoriteState((prev) => !prev);
+    },
+    [toggleFavorite],
+  );
 
   if (error) {
     return <ErrorMessage message={error} />;
@@ -73,11 +83,8 @@ const ArtworkCard: React.FC<ArtworkCardProps> = ({
             </Description>
           </Column>
           <FavoriteIcon
-            active={favorite}
-            toggleActive={(e: React.MouseEvent) => {
-              e.stopPropagation();
-              toggleFavorite();
-            }}
+            active={favoriteState}
+            toggleActive={handleToggleFavorite}
           />
         </Info>
       </Card>
@@ -85,4 +92,4 @@ const ArtworkCard: React.FC<ArtworkCardProps> = ({
   );
 };
 
-export default ArtworkCard;
+export default React.memo(ArtworkCard);
