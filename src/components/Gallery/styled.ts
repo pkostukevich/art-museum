@@ -13,6 +13,10 @@ const GalleryContainer = styled.div`
     gap: 80px;
   }
 
+  @media screen and (max-width: ${theme.breakpoints.medium}) {
+    justify-content: center;
+  }
+
   @media screen and (max-width: ${theme.breakpoints.small}) {
     width: 100%;
     gap: 0;

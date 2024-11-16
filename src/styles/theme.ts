@@ -10,6 +10,8 @@ const theme = {
 
     white: '#FFFFFF',
     ocher: '#E0A449',
+
+    transparent: '#00000000',
   },
 
   fonts: {

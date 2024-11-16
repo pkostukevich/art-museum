@@ -14,6 +14,7 @@ const GridContainer = styled.div`
 
   @media screen and (max-width: ${theme.breakpoints.medium}) {
     grid-template-columns: repeat(1, 1fr);
+    justify-items: center;
   }
 
   @media screen and (max-width: ${theme.breakpoints.small}) {

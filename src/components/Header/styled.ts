@@ -71,4 +71,8 @@ const BurgerLine = styled.div<{ isOpen: boolean }>`
   margin: 4px 0;
 `;
 
-export { BurgerLine, BurgerMenu, HeaderContainer, HeaderWrapper, Nav };
+const Logo = styled.img`
+  width: 150px;
+`;
+
+export { BurgerLine, BurgerMenu, HeaderContainer, HeaderWrapper, Nav, Logo };
