@@ -14,7 +14,7 @@ const FavoriteIcon: React.FC<FavoriteIconProps> = ({
   toggleActive,
 }) => {
   return (
-    <IconWrapper active={active} onClick={toggleActive}>
+    <IconWrapper active={String(active)} onClick={toggleActive}>
       <img src={Favorite} alt="favorite" />
     </IconWrapper>
   );

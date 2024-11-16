@@ -1,11 +1,13 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
 
 import ArtworkCard from '@components/ArtworkCard';
+import ErrorMessage from '@components/ErrorBoundary/ErrorMessage';
+import Loader from '@components/ui/Loader';
 import PaginationBar from '@components/ui/PaginationBar';
 import SectionTitle from '@components/ui/SectionTitle';
 import { ROUTES } from '@constants/routes';
-import { usePagination } from '@hooks/usePagination';
+import useFetchPaintings from '@hooks/useFetchPaintings';
 import { useFavorites } from '@hooks/useSessionStorage';
 import { CardSize } from '@models/enums/cardSize.enum';
 import { Painting } from '@models/interfaces/painting.interface';
@@ -15,28 +17,47 @@ import { retrieveArtistName } from '@utils/retrieveArtistInfo';
 import { EmptyResult, GalleryContainer } from './styled';
 
 type GalleryProps = {
-  data: Painting[];
+  searchParam: string;
   itemsPerPage: number;
 };
 
-const Gallery: React.FC<GalleryProps> = ({ data, itemsPerPage }) => {
+const Gallery: React.FC<GalleryProps> = ({ searchParam, itemsPerPage }) => {
+  const minPage: number = 1;
+  const maxPage: number = 10;
   const navigate: NavigateFunction = useNavigate();
   const [favorites, toggleFavoriteInStorage] = useFavorites();
-  const { getCurrentData, currentPage, maxPage, next, prev, setPage } =
-    usePagination(data, itemsPerPage);
-  const pages: number[] = generatePageNumbers(currentPage, maxPage);
-  const paintings: Painting[] = getCurrentData();
+  const [currentPage, setCurrentPage] = useState<number>(minPage);
+  const { paintings, loading, error } = useFetchPaintings(
+    currentPage,
+    itemsPerPage,
+    searchParam,
+  );
 
-  const handleCardClick = (id: number): void => {
-    navigate(`${ROUTES.PAINTING_INFO}/${id}`);
-  };
+  const handleCardClick: (id: number) => void = useCallback(
+    (id: number): void => {
+      navigate(`${ROUTES.PAINTING_INFO}/${id}`);
+    },
+    [navigate],
+  );
 
   const toggleFavorite: (id: number) => void = useCallback(
-    (id: number) => {
+    (id: number): void => {
       toggleFavoriteInStorage(id);
     },
     [toggleFavoriteInStorage],
   );
+
+  const handlePrevPage = (): void => {
+    setCurrentPage((prev) => Math.max(prev - 1, minPage));
+  };
+
+  const handleNextPage = (): void => {
+    setCurrentPage((prev) => Math.min(prev + 1, maxPage));
+  };
+
+  if (error) {
+    return <ErrorMessage message={error} />;
+  }
 
   return (
     <>
@@ -46,10 +67,12 @@ const Gallery: React.FC<GalleryProps> = ({ data, itemsPerPage }) => {
         align="center"
       />
       <GalleryContainer>
-        {paintings.length === 0 ? (
+        {loading ? (
+          <Loader />
+        ) : paintings.length === 0 ? (
           <EmptyResult>No paintings found</EmptyResult>
         ) : (
-          paintings.map((item) => (
+          paintings.map((item: Painting) => (
             <ArtworkCard
               key={item.id}
               title={item.title}
@@ -66,15 +89,16 @@ const Gallery: React.FC<GalleryProps> = ({ data, itemsPerPage }) => {
       </GalleryContainer>
       <PaginationBar
         currentPage={currentPage}
-        minPage={1}
+        minPage={minPage}
         maxPage={maxPage}
-        onPrev={prev}
-        onNext={next}
-        setPage={setPage}
-        pages={pages}
+        onPrev={handlePrevPage}
+        onNext={handleNextPage}
+        setPage={setCurrentPage}
+        pages={generatePageNumbers(currentPage, maxPage)}
+        visibility={!searchParam}
       />
     </>
   );
 };
 
-export default Gallery;
+export default React.memo(Gallery);

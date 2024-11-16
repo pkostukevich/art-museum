@@ -42,7 +42,10 @@ const Favorites: React.FC = () => {
         {loading ? (
           <Loader />
         ) : (
-          <Grid items={favorites} noItemsMessage="There's nothing here yet." />
+          <Grid
+            items={favorites}
+            noItemsMessage={`There's nothing here yet.`}
+          />
         )}
       </Section>
     </>
