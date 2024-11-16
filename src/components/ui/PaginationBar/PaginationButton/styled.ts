@@ -10,7 +10,7 @@ export const Button = styled.button<{ active: boolean; hidden: boolean }>`
   line-height: 24px;
   border: none;
   border-radius: 4px;
-  background-color: #00000000;
+  background-color: ${theme.colors.transparent};
   cursor: pointer;
 
   ${({ active }) =>

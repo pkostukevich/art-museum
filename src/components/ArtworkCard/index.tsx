@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
+import ErrorMessage from '@components/ErrorBoundary/ErrorMessage';
 import FavoriteIcon from '@components/FavoriteIcon';
 import { STATIC_TEXTS } from '@constants/staticTexts';
 import { CardSize } from '@models/enums/cardSize.enum';
@@ -38,14 +39,34 @@ const ArtworkCard: React.FC<ArtworkCardProps> = ({
   toggleFavorite,
   handleClick,
 }) => {
-  const [imageSrc, setImageSrc] = React.useState<string>(DefaultArtwork);
+  const [imageSrc, setImageSrc] = useState<string>(DefaultArtwork);
+  const [favoriteState, setFavoriteState] = useState(favorite);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    getImageUrl(imageId).then((url) => {
-      const src: string = url ? url : DefaultArtwork;
-      setImageSrc(src);
-    });
+    setError(null);
+    getImageUrl(imageId)
+      .then((url) => {
+        const src: string = url ? url : DefaultArtwork;
+        setImageSrc(src);
+      })
+      .catch((error) => {
+        setError(error.message);
+      });
   }, [imageId]);
+
+  const handleToggleFavorite: (e: React.MouseEvent) => void = useCallback(
+    (e: React.MouseEvent) => {
+      e.stopPropagation();
+      toggleFavorite();
+      setFavoriteState((prev) => !prev);
+    },
+    [toggleFavorite],
+  );
+
+  if (error) {
+    return <ErrorMessage message={error} />;
+  }
 
   return (
     <Wrapper size={size} onClick={handleClick}>
@@ -62,11 +83,8 @@ const ArtworkCard: React.FC<ArtworkCardProps> = ({
             </Description>
           </Column>
           <FavoriteIcon
-            active={favorite}
-            toggleActive={(e: React.MouseEvent) => {
-              e.stopPropagation();
-              toggleFavorite();
-            }}
+            active={favoriteState}
+            toggleActive={handleToggleFavorite}
           />
         </Info>
       </Card>
@@ -74,4 +92,4 @@ const ArtworkCard: React.FC<ArtworkCardProps> = ({
   );
 };
 
-export default ArtworkCard;
+export default React.memo(ArtworkCard);

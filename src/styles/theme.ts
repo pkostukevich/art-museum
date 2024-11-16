@@ -10,6 +10,8 @@ const theme = {
 
     white: '#FFFFFF',
     ocher: '#E0A449',
+
+    transparent: '#00000000',
   },
 
   fonts: {
@@ -31,13 +33,20 @@ const theme = {
       xxl: '64px',
     },
   },
+
+  paddings: {
+    global: '20px',
+    small: '16px',
+    regular: '24px',
+    medium: '32px',
+    large: '64px',
+  },
+
   breakpoints: {
     large: '1320px',
     medium: '900px',
     small: '600px',
   },
-
-  globalPadding: '20px',
 };
 
 export default theme;

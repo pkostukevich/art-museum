@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { DEBOUNCE_DELAY } from '@constants/debounce';
-import { STATIC_TEXTS } from '@constants/staticTexts';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useDebounce } from '@hooks/useDebounce';
 import * as Yup from 'yup';
@@ -15,6 +14,7 @@ type SearchFormInputs = {
 
 type SearchFormProps = {
   onSearch: (term: string) => void;
+  placeholder?: string;
 };
 
 const schema: Yup.ObjectSchema<
@@ -26,7 +26,7 @@ const schema: Yup.ObjectSchema<
   search: Yup.string(),
 });
 
-const SearchForm: React.FC<SearchFormProps> = ({ onSearch }) => {
+const SearchForm: React.FC<SearchFormProps> = ({ onSearch, placeholder }) => {
   const {
     register,
     handleSubmit,
@@ -57,7 +57,7 @@ const SearchForm: React.FC<SearchFormProps> = ({ onSearch }) => {
       <SearchInput
         type="text"
         {...register('search')}
-        placeholder={STATIC_TEXTS.searchForm.placeholder}
+        placeholder={placeholder}
       />
       {errors.search && <ErrorMessage>{errors.search.message}</ErrorMessage>}
     </SearchFormContainer>

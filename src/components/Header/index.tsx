@@ -1,17 +1,20 @@
-import React, { useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
+import { Location, useLocation } from 'react-router-dom';
 
+import NavItem from '@components/ui/NavItem';
 import { ROUTES } from '@constants/routes';
+import useClickOutside from '@hooks/useClickOutside';
 import { NavItemInterface } from '@models/interfaces/navItem.interface';
 import MuseumLogo from '@svg/museum-logo-light.svg';
 import Favorites from '@svg/navigation/favorites.svg';
 import Home from '@svg/navigation/home.svg';
 
-import NavItem from './NavItem';
 import {
   BurgerLine,
   BurgerMenu,
   HeaderContainer,
   HeaderWrapper,
+  Logo,
   Nav,
 } from './styled';
 
@@ -30,35 +33,37 @@ const navItems: NavItemInterface[] = [
 
 const Header: React.FC = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
+  const menuRef: React.RefObject<HTMLDivElement> = useRef<HTMLDivElement>(null);
+  const location: Location = useLocation();
 
-  const toggleMenu: () => void = () => {
-    setMenuOpen(!isMenuOpen);
-  };
+  const toggleMenu: () => void = useCallback(() => {
+    setMenuOpen((prev) => !prev);
+  }, []);
+
+  useClickOutside(menuRef, () => setMenuOpen(false));
 
   return (
     <HeaderContainer>
       <HeaderWrapper>
-        <img
-          src={MuseumLogo}
-          alt="Museum of Art logo"
-          style={{ width: '150px' }}
-        />
-        <div>
-          <Nav isOpen={isMenuOpen}>
-            {navItems.map(({ path, icon, label }, index) => (
-              <NavItem
-                key={index}
-                path={path}
-                icon={icon}
-                label={label}
-                handleClick={toggleMenu}
-              />
-            ))}
+        <Logo src={MuseumLogo} alt="Museum of Art logo" />
+        <div ref={menuRef}>
+          <Nav open={isMenuOpen}>
+            {navItems
+              .filter((navItem) => navItem.path !== location.pathname)
+              .map(({ path, icon, label }, index) => (
+                <NavItem
+                  key={index}
+                  path={path}
+                  icon={icon}
+                  label={label}
+                  handleClick={toggleMenu}
+                />
+              ))}
           </Nav>
-          <BurgerMenu onClick={toggleMenu}>
-            <BurgerLine isOpen={isMenuOpen} />
-            <BurgerLine isOpen={isMenuOpen} />
-            <BurgerLine isOpen={isMenuOpen} />
+          <BurgerMenu onClick={toggleMenu} aria-expanded={isMenuOpen}>
+            <BurgerLine open={isMenuOpen} />
+            <BurgerLine open={isMenuOpen} />
+            <BurgerLine open={isMenuOpen} />
           </BurgerMenu>
         </div>
       </HeaderWrapper>

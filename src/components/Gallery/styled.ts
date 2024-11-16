@@ -8,9 +8,14 @@ const GalleryContainer = styled.div`
   margin: 30px auto;
   gap: 70px;
   width: fit-content;
+  height: 444px;
 
   @media screen and (max-width: ${theme.breakpoints.large}) {
     gap: 80px;
+  }
+
+  @media screen and (max-width: ${theme.breakpoints.medium}) {
+    justify-content: center;
   }
 
   @media screen and (max-width: ${theme.breakpoints.small}) {

@@ -14,9 +14,10 @@ const Note = styled.p`
   font-size: ${theme.fonts.sizes.xs};
 `;
 
-const MainTitle = styled.p`
+const MainTitle = styled.h2`
   color: ${theme.colors.grey};
   font-size: ${theme.fonts.sizes.xl};
+  font-weight: ${theme.fonts.weights.regular};
 
   @media screen and (max-width: ${theme.breakpoints.small}) {
     font-size: ${theme.fonts.sizes.l};

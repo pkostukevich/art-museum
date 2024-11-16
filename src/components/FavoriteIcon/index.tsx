@@ -14,10 +14,10 @@ const FavoriteIcon: React.FC<FavoriteIconProps> = ({
   toggleActive,
 }) => {
   return (
-    <IconWrapper active={active} onClick={toggleActive}>
+    <IconWrapper active={String(active)} onClick={toggleActive}>
       <img src={Favorite} alt="favorite" />
     </IconWrapper>
   );
 };
 
-export default FavoriteIcon;
+export default React.memo(FavoriteIcon);

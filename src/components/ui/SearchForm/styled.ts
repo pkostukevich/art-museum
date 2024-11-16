@@ -14,7 +14,7 @@ const SearchInput = styled.input`
   border-radius: 16px;
   border: none;
   background-color: ${theme.colors.borderGrey};
-  padding: 16px 64px 16px 16px;
+  padding: ${theme.paddings.small};
   box-sizing: border-box;
   background-image: url(${SearchIcon});
   background-repeat: no-repeat;
