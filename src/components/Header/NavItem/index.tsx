@@ -16,11 +16,7 @@ const NavItem: React.FC<NavItemProps> = ({
   handleClick,
 }) => {
   return (
-    <StyledNavLink
-      to={path}
-      hidden={false} // TODO
-      onClick={handleClick}
-    >
+    <StyledNavLink to={path} hidden={false} onClick={handleClick}>
       <img src={icon} alt={label} />
       <span>{label}</span>
     </StyledNavLink>

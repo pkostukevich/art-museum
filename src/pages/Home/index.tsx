@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 
 import { fetchPaintings } from '@api/fetchPaintings';
+import ErrorMessage from '@components/ErrorBoundary/ErrorMessage';
 import Gallery from '@components/Gallery';
 import Grid from '@components/Grid';
 import Loader from '@components/Loader';
@@ -20,15 +21,20 @@ const Home: React.FC = () => {
   );
   const [filteredPaintings, setFilteredPaintings] = useState<Painting[]>([]);
   const itemsPerPage: number = useItemsPerPage();
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     setLoading(true);
+    setError(null);
     fetchPaintings()
       .then((data: Painting[]) => {
         const paintings: Painting[] = data.slice(0, ITEMS_LIMIT);
         setPaintings(paintings);
         setFilteredPaintings(paintings);
         setRecommendedPaintings(data.slice(ITEMS_LIMIT));
+      })
+      .catch((error) => {
+        setError(error.message);
       })
       .finally(() => setLoading(false));
   }, []);
@@ -48,6 +54,10 @@ const Home: React.FC = () => {
     },
     [paintings],
   );
+
+  if (error) {
+    return <ErrorMessage message={error} />;
+  }
 
   return (
     <>

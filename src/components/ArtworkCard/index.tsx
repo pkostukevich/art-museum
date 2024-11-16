@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
+import ErrorMessage from '@components/ErrorBoundary/ErrorMessage';
 import FavoriteIcon from '@components/FavoriteIcon';
 import { STATIC_TEXTS } from '@constants/staticTexts';
 import { CardSize } from '@models/enums/cardSize.enum';
@@ -38,14 +39,24 @@ const ArtworkCard: React.FC<ArtworkCardProps> = ({
   toggleFavorite,
   handleClick,
 }) => {
-  const [imageSrc, setImageSrc] = React.useState<string>(DefaultArtwork);
+  const [imageSrc, setImageSrc] = useState<string>(DefaultArtwork);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    getImageUrl(imageId).then((url) => {
-      const src: string = url ? url : DefaultArtwork;
-      setImageSrc(src);
-    });
+    setError(null);
+    getImageUrl(imageId)
+      .then((url) => {
+        const src: string = url ? url : DefaultArtwork;
+        setImageSrc(src);
+      })
+      .catch((error) => {
+        setError(error.message);
+      });
   }, [imageId]);
+
+  if (error) {
+    return <ErrorMessage message={error} />;
+  }
 
   return (
     <Wrapper size={size} onClick={handleClick}>
