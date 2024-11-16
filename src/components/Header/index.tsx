@@ -47,7 +47,7 @@ const Header: React.FC = () => {
       <HeaderWrapper>
         <Logo src={MuseumLogo} alt="Museum of Art logo" />
         <div ref={menuRef}>
-          <Nav isOpen={isMenuOpen}>
+          <Nav open={isMenuOpen}>
             {navItems
               .filter((navItem) => navItem.path !== location.pathname)
               .map(({ path, icon, label }, index) => (
@@ -61,9 +61,9 @@ const Header: React.FC = () => {
               ))}
           </Nav>
           <BurgerMenu onClick={toggleMenu} aria-expanded={isMenuOpen}>
-            <BurgerLine isOpen={isMenuOpen} />
-            <BurgerLine isOpen={isMenuOpen} />
-            <BurgerLine isOpen={isMenuOpen} />
+            <BurgerLine open={isMenuOpen} />
+            <BurgerLine open={isMenuOpen} />
+            <BurgerLine open={isMenuOpen} />
           </BurgerMenu>
         </div>
       </HeaderWrapper>

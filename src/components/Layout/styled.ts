@@ -5,7 +5,7 @@ const ContentWrapper = styled.main`
   min-height: calc(100vh - 370px);
 
   max-width: calc(${theme.breakpoints.large} - ${theme.globalPadding} * 2);
-  margin: auto;
+  margin: 100px auto;
 
   @media screen and (max-width: ${theme.breakpoints.large}) {
     max-width: calc(${theme.breakpoints.medium} - ${theme.globalPadding} * 2);
@@ -17,6 +17,7 @@ const ContentWrapper = styled.main`
 
   @media screen and (max-width: ${theme.breakpoints.small}) {
     min-height: calc(100vh - 250px);
+    margin: 60px auto;
   }
 `;
 

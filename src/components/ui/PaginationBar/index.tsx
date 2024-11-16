@@ -14,6 +14,7 @@ type PaginationBarProps = {
   onNext: () => void;
   setPage: (page: number) => void;
   pages: number[];
+  visibility: boolean;
 };
 
 const PaginationBar: React.FC<PaginationBarProps> = ({
@@ -24,6 +25,7 @@ const PaginationBar: React.FC<PaginationBarProps> = ({
   onNext,
   setPage,
   pages,
+  visibility,
 }) => {
   const handlePaginationClick: (page: number) => void = useCallback(
     (page: number): void => {
@@ -34,24 +36,28 @@ const PaginationBar: React.FC<PaginationBarProps> = ({
 
   return (
     <PaginationBarWrapper>
-      <PaginationButton
-        content={<img src={ArrowLeft} alt="prev" />}
-        handleClick={onPrev}
-        hidden={currentPage === minPage}
-      />
-      {pages.map((page: number) => (
-        <PaginationButton
-          key={page}
-          content={page}
-          handleClick={() => handlePaginationClick(page)}
-          active={currentPage === page}
-        />
-      ))}
-      <PaginationButton
-        content={<img src={ArrowRight} alt="next" />}
-        handleClick={onNext}
-        hidden={pages.length === 0 || currentPage === maxPage}
-      />
+      {visibility && (
+        <>
+          <PaginationButton
+            content={<img src={ArrowLeft} alt="prev" />}
+            handleClick={onPrev}
+            hidden={currentPage === minPage}
+          />
+          {pages.map((page: number) => (
+            <PaginationButton
+              key={page}
+              content={page}
+              handleClick={() => handlePaginationClick(page)}
+              active={currentPage === page}
+            />
+          ))}
+          <PaginationButton
+            content={<img src={ArrowRight} alt="next" />}
+            handleClick={onNext}
+            hidden={pages.length === 0 || currentPage === maxPage}
+          />
+        </>
+      )}
     </PaginationBarWrapper>
   );
 };

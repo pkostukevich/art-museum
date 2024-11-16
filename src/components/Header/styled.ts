@@ -33,7 +33,7 @@ const HeaderWrapper = styled.div`
   }
 `;
 
-const Nav = styled.nav<{ isOpen: boolean }>`
+const Nav = styled.nav<{ open: boolean }>`
   display: flex;
   flex-direction: row;
   gap: 16px;
@@ -47,8 +47,8 @@ const Nav = styled.nav<{ isOpen: boolean }>`
     left: 0;
     right: 0;
 
-    ${({ isOpen }) =>
-      isOpen &&
+    ${({ open }) =>
+      open &&
       `display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -64,7 +64,7 @@ const BurgerMenu = styled.div`
   }
 `;
 
-const BurgerLine = styled.div<{ isOpen: boolean }>`
+const BurgerLine = styled.div<{ open: boolean }>`
   width: 25px;
   height: 2px;
   background-color: ${theme.colors.white};
