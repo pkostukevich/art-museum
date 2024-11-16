@@ -50,7 +50,7 @@ const Home: React.FC = () => {
   return (
     <>
       <Section>
-        <PageTitle text="Let's find some art here!" highlightedText="art" />
+        <PageTitle text={`Let's find some art here!'`} highlightedText="art" />
         <SearchForm
           onSearch={handleSearch}
           placeholder={STATIC_TEXTS.searchForm.placeholder}

@@ -40,7 +40,7 @@ const Card = styled.div<{ size: CardSize }>`
   flex-direction: ${({ size }) => (size === CardSize.LARGE ? 'column' : 'row')};
   align-items: center;
   line-height: 26.3px;
-  padding: 16px;
+  padding: ${theme.paddings.small};
   gap: 16px;
   cursor: pointer;
   height: ${({ size }) => (size === CardSize.LARGE ? '100%' : 'auto')};
