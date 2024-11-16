@@ -45,13 +45,13 @@ const Nav = styled.nav<{ isOpen: boolean }>`
     position: absolute;
     top: 92px;
     left: 0;
-    width: 100%;
+    right: 0;
 
     ${({ isOpen }) =>
       isOpen &&
       `display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;`}
 `;
 
@@ -72,7 +72,9 @@ const BurgerLine = styled.div<{ isOpen: boolean }>`
 `;
 
 const Logo = styled.img`
-  width: 150px;
+  @media screen and (max-width: ${theme.breakpoints.small}) {
+    width: 150px;
+  }
 `;
 
 export { BurgerLine, BurgerMenu, HeaderContainer, HeaderWrapper, Nav, Logo };
